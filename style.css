@@ -782,7 +782,7 @@ li:not(:last-child) {
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-color: #13151b;
+        --bg-color: rgb(15 17 22);
         --font-color: #c8c8c8;
         --font-contrast-color: #fff;
         --form-color: #191920;
