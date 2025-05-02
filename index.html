@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="utf-8">
+
+<head>
+
+    <title>Простое Сообщество</title>
+
+    <meta name="theme-color" content="#EAF1F4" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1e1e1e" media="(prefers-color-scheme: dark)">
+
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Простое Сообщество" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="application-name" content="Простое Сообщество" />
+    <meta name="description" content="Ваш навигатор эффективности">
+
+    <meta property="og:site_name" content="Простое Сообщество" />
+    <meta property="og:description" content="Ваш навигатор эффективности." />
+    <meta property="og:title" content="Простое Сообщество">
+    <meta property="og:type" content="profile">
+
+</head>
+
+<body>
+
+    <svg style="display: none;">
+        <defs>
+          <symbol id="icon-book" viewBox="0 -960 960 960">
+            <path d="M520-278q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 97q-14 0-26.5-3.5T430-194q-39-23-82-34.5T260-240q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-45 0-88 11.5T530-194q-11 6-23.5 9.5T480-181Zm80-428q0-9 6.5-18.5T581-640q29-10 58-15t61-5q20 0 39.5 2.5T778-651q9 2 15.5 10t6.5 18q0 17-11 25t-28 4q-14-3-29.5-4.5T700-600q-26 0-51 5t-48 13q-18 7-29.5-1T560-609Zm0 220q0-9 6.5-18.5T581-420q29-10 58-15t61-5q20 0 39.5 2.5T778-431q9 2 15.5 10t6.5 18q0 17-11 25t-28 4q-14-3-29.5-4.5T700-380q-26 0-51 4.5T601-363q-18 7-29.5-.5T560-389Zm0-110q0-9 6.5-18.5T581-530q29-10 58-15t61-5q20 0 39.5 2.5T778-541q9 2 15.5 10t6.5 18q0 17-11 25t-28 4q-14-3-29.5-4.5T700-490q-26 0-51 5t-48 13q-18 7-29.5-1T560-499Z"/>
+          </symbol>
+        </defs>
+    </svg>
+
+    <svg style="display: none;">
+        <defs>
+          <symbol id="icon-inbox" viewBox="0 -960 960 960">
+            <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm280-200q32 0 59-16.5t44-43.5q6-9 15-14.5t20-5.5h142v-360H200v360h142q11 0 20 5.5t15 14.5q17 27 44 43.5t59 16.5Z"/>
+        </symbol>
+        </defs>
+    </svg>
+
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-bookmark" viewBox="0 -960 960 960">
+                <path d="m480-240-168 72q-40 17-76-6.5T200-241v-519q0-33 23.5-56.5T280-840h400q33 0 56.5 23.5T760-760v519q0 43-36 66.5t-76 6.5l-168-72Z"/>       
+            </symbol>
+        </defs>
+    </svg>
+
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-shield" viewBox="0 -960 960 960">
+                <path d="m438-452-56-56q-12-12-28-12t-28 12q-12 12-12 28.5t12 28.5l84 85q12 12 28 12t28-12l170-170q12-12 12-28.5T636-593q-12-12-28.5-12T579-593L438-452Zm42 368q-7 0-13-1t-12-3q-135-45-215-166.5T160-516v-189q0-25 14.5-45t37.5-29l240-90q14-5 28-5t28 5l240 90q23 9 37.5 29t14.5 45v189q0 140-80 261.5T505-88q-6 2-12 3t-13 1Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-star" viewBox="0 -960 960 960">
+                <path d="M480-269 314-169q-11 7-23 6t-21-8q-9-7-14-17.5t-2-23.5l44-189-147-127q-10-9-12.5-20.5T140-571q4-11 12-18t22-9l194-17 75-178q5-12 15.5-18t21.5-6q11 0 21.5 6t15.5 18l75 178 194 17q14 2 22 9t12 18q4 11 1.5 22.5T809-528L662-401l44 189q3 13-2 23.5T690-171q-9 7-21 8t-23-6L480-269Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-tag" viewBox="0 -960 960 960">
+                <path d="m360-320-33 131q-3 13-13 21t-24 8q-19 0-31-15t-7-33l28-112H171q-20 0-32-15.5t-7-34.5q3-14 14-22t25-8h129l40-160H231q-20 0-32-15.5t-7-34.5q3-14 14-22t25-8h129l33-131q3-13 13-21t24-8q19 0 31 15t7 33l-28 112h160l33-131q3-13 13-21t24-8q19 0 31 15t7 33l-28 112h109q20 0 32 15.5t7 34.5q-3 14-14 22t-25 8H660l-40 160h109q20 0 32 15.5t7 34.5q-3 14-14 22t-25 8H600l-33 131q-3 13-13 21t-24 8q-19 0-31-15t-7-33l28-112H360Zm20-80h160l40-160H420l-40 160Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-telegram" viewBox="0 0 48 48">
+                <path d="M5.83,23.616c12.568-5.529,28.832-12.27,31.077-13.203c5.889-2.442,7.696-1.974,6.795,3.434 c-0.647,3.887-2.514,16.756-4.002,24.766c-0.883,4.75-2.864,5.313-5.979,3.258c-1.498-0.989-9.059-5.989-10.7-7.163 c-1.498-1.07-3.564-2.357-0.973-4.892c0.922-0.903,6.966-6.674,11.675-11.166c0.617-0.59-0.158-1.559-0.87-1.086 c-6.347,4.209-15.147,10.051-16.267,10.812c-1.692,1.149-3.317,1.676-6.234,0.838c-2.204-0.633-4.357-1.388-5.195-1.676 C1.93,26.43,2.696,24.995,5.83,23.616z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-youtube" viewBox="0 0 24 24">
+                <path d="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,14.598V9.402c0-0.385,0.417-0.625,0.75-0.433l4.5,2.598c0.333,0.192,0.333,0.674,0,0.866l-4.5,2.598 C10.417,15.224,10,14.983,10,14.598z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-hi" viewBox="0 0 630 630">
+                <g id="ic" fill-rule="evenodd">
+                    <path d="M459.76577,529.835745 C517.546195,491.517827 515.479886,435.873534 515.479886,405.827257 C515.479886,375.78098 515.880166,325.357537 539.312565,301.059605 C562.744964,276.761672 552.394114,260.327703 518.35283,258.308124 C484.311545,256.288545 475.8604,293.731011 469.456262,315.083894 C463.052124,336.436777 450.57909,339.19592 434.526078,326.831586 C418.473067,314.467252 363.721955,209.454223 351.326128,188.997351 C338.930302,168.540478 328.448402,151.984604 306.598752,166.18261 C284.749101,180.380616 306.640403,209.591368 313.430577,220.963182 C320.220751,232.334997 373.668483,318.898542 366.929103,323.629517 C360.189723,328.360493 302.518958,235.352175 287.881074,213.73313 C273.24319,192.114085 257.597548,158.618331 233.151296,175.769515 C208.705044,192.920698 231.660993,216.887453 247.851149,241.314403 C264.041305,265.741353 334.172913,359.354123 324.669311,366.362712 C315.165708,373.371301 245.933158,264.189081 233.151296,248.190927 C220.369433,232.192773 205.343481,236.018595 196.768397,243.347188 C188.193313,250.675781 184.919117,265.884593 192.329996,276.085092 C196.530878,281.867279 229.573349,326.928095 255.503809,361.615482 C281.434269,396.302869 295.977676,416.691677 289.901669,421.078268 C283.825662,425.464859 238.268294,362.426896 224.960216,345.354408 C211.652139,328.281921 197.8686,333.005118 190.494292,339.350335 C183.119985,345.695551 180.458366,358.07106 190.494292,371.935856 C200.530218,385.800652 246.177471,438.372678 296.273081,496.617016 C346.368692,554.861354 401.985345,568.153663 459.76577,529.835745 Z" id="Path" fill="currentColor"></path>
+                    <g id="Group" transform="translate(281.3998, 301.8915) rotate(-7) translate(-281.3998, -301.8915)translate(14.5745, 55.4009)" fill="currentColor" fill-opacity="0.5" fill-rule="nonzero">
+                        <path d="M16.0527554,340.003105 C21.0750638,337.705658 27.0088979,339.914595 29.3063449,344.936903 C54.8283363,400.728969 101.558065,443.279875 157.81321,462.307194 C163.044903,464.076723 165.851541,469.752334 164.082013,474.984027 C162.312484,480.21572 156.636872,483.022359 151.405179,481.25283 C89.8943389,460.447864 38.920838,414.032688 11.1189572,353.256695 C8.82151026,348.234386 11.0304469,342.300552 16.0527554,340.003105 Z" id="Path" transform="translate(87.4111, 410.4385) rotate(9) translate(-87.4111, -410.4385)"></path>
+                        <path d="M63.0362386,324.920178 C68.0414941,322.585812 73.9914325,324.750997 76.3257979,329.756252 C95.182159,370.187328 127.589514,401.850958 166.31325,417.372979 C171.439599,419.427824 173.929545,425.249332 171.874699,430.375682 C169.819854,435.502031 163.998345,437.991976 158.871996,435.937131 C115.321544,418.48037 79.1580335,383.146785 58.2001644,338.209737 C55.8657989,333.204482 58.0309831,327.254543 63.0362386,324.920178 Z" id="Path" transform="translate(114.9279, 380.3192) rotate(9) translate(-114.9279, -380.3192)"></path>
+                        <path d="M375.347858,56.8606962 C378.057433,52.0482072 384.15527,50.343458 388.967759,53.0530324 C429.904992,76.1019119 461.347181,114.241678 476.664632,160.163005 C478.412172,165.402084 475.58172,171.065858 470.342641,172.813398 C465.103562,174.560937 459.439788,171.730485 457.692249,166.491406 C443.944024,125.274578 415.764614,91.0926042 379.155522,70.480597 C374.343033,67.7710226 372.638284,61.6731853 375.347858,56.8606962 Z" id="Path"></path>
+                        <path d="M388.828491,5.8082291 C391.144873,0.794625554 397.087,-1.39190482 402.100603,0.924476828 C465.66197,30.2910554 514.013134,87.4628226 533.289097,157.450295 C534.755596,162.774882 531.627997,168.280144 526.30341,169.746643 C520.978824,171.213142 515.473561,168.085543 514.007062,162.760956 C496.291868,98.4403484 451.919495,45.9732157 393.712243,19.0803414 C388.69864,16.7639597 386.512109,10.8218327 388.828491,5.8082291 Z" id="Path"></path>
+                    </g>
+                </g>
+            </symbol>
+        </defs>
+    </svg>
+
+    <div class="parent">
+        <div class="centered-section">
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <div class="carousel-item active">философия</div>
+                        <div class="carousel-item next">биология</div>
+                        <div class="carousel-item next">психология</div>
+                        <div class="carousel-item next">сообщество</div>
+                    </div>
+                    <div style="margin-left: 4px; height: 30px;">личной эффективности</div>
+                </div>
+
+        </div>
+
+        <div class="wrapper">
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="circle">1</div>
+                    <h3>Полезные материалы</h3>
+                    <p class="special">Лучшие практики, подтверждённые наукой и личным опытом</p>
+                    <p class="desc"><strong>Более</strong> 300</p>
+                    <div class="tags">
+                        <div class="tag">#статей</div>
+                        <div class="tag">#видео</div>
+                        <div class="tag">#стримов</div>
+                        <div class="tag">#лекций</div>
+                        <div class="tag">#обзоров</div>
+                        <div class="tag">#курсов</div>
+                    </div>
+                    <p class="desc"><strong>О том</strong>, как вам стать</p>
+                    <div class="tags">
+                        <div class="tag">#продуктивным</div>
+                        <div class="tag">#счастливым</div>
+                        <div class="tag">#здоровым</div>
+                        <div class="tag">#сильным</div>
+                        <div class="tag">#мудрым</div>
+                        <!--
+                        <div class="tag">#состоятельным</div>
+                        <div class="tag">#креативным</div>
+                        -->
+                    </div>
+                    <div class="btn"
+                            data-title="Материалы Сообщества" 
+                            data-icon="#icon-book" 
+                            data-content="content/materials.html" 
+                            onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
+                        <svg class="icon small"><use href="#icon-book"/></svg>
+                        <span>Ознакомиться с базой знаний</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="circle">2</div>
+                    <h3>Регулярность</h3>
+                    <p class="special">Сформируйте образ жизни, который поддерживает ваши цели благодаря продуктивной среде</p>
+                    <p class="desc"><strong>Каждый</strong> месяц:</p>
+                    <div class="tags-list">
+                        <div class="tag"><strong>2 стрима</strong> с тонной науки</div>
+                        <div class="tag"><strong>30</strong> напоминаний и <strong>лайфхаков</strong></div>
+                        <div class="tag"><strong>10 статей</strong> об эффективности</div>
+                        <!--<div class="tag"><strong>20+</strong> интересных <strong>обсуждений</strong></div>-->
+                        <div class="tag"><strong>15+</strong> ответов на <strong>ваши вопросы</strong></div>
+                    </div>
+
+                    <div class="btn"
+                            data-title="Недавний материал" 
+                            data-icon="#icon-bookmark" 
+                            data-content="content/free_material.html"
+                            onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
+                        <svg class="icon small"><use href="#icon-bookmark"/></svg>
+                        <span>Посмотреть недавний материал</span>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <div class="circle">3</div>
+                    <h3>Живое сообщество</h3>
+                    <p class="special"><strong>2500+</strong> активных участников, разделяющих ценности саморазвития</p>
+                    <div class="testimonial">
+                        Каждый день напоминая зачем нужны маленькие интервенции я больше внедряю их в свою рутину. Сообщество стало для меня сильным мотиватором и источником знаний
+                        <div class="user">
+                          <div>@govard</div>
+                          <img src="avatars/olex.png">
+                        </div>
+                    </div>
+
+                      <div class="btn"
+                            data-title="Отзывы участников" 
+                            data-icon="#icon-star" 
+                            data-content="content/feedback.html"
+                            onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
+                        <svg class="icon small"><use href="#icon-star"/></svg>
+                        <span>Читать все отзывы</span>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <div class="circle">4</div>
+                    <h3>Бесплатная рассылка</h3>
+                    <p class="special">Подпишитесь на специальную цепочку писем, которая за год увеличит вашу личную эффективность <strong>в два раза</strong></p>
+                    <div class="tags-list">
+                        <div class="tag"><strong>300+</strong> писем о продуктивности</div>
+                        <div class="tag">только <strong>самое главное</strong>, коротко</div>
+                        <div class="tag">научная <strong>доказательность</strong></div>
+                    </div>
+                    <div class="btn">
+                        <svg class="icon small"><use href="#icon-inbox"/></svg>
+                        <span>Подписаться на рассылку</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="circle">5</div>
+                    <h3>Бесплатные материалы</h3>
+                    <p class="special">Ознакомьтесь с контентом, который мы публикуем в открытом доступе – там много полезного</p>
+                    <div class="tags-list">
+                        <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Простые Мысли</a>
+                        <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Простая Академия</a>
+                        <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Просто Глеб</a>
+                        <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Простое Сообщество</a>
+                    </div>
+                    <div class="btn">
+                        <svg class="icon small"><use href="#icon-telegram"/></svg>
+                        <span>Канал в Telegram</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="circle">6</div>
+                    <h3>Остались вопросы?</h3>
+                    <p class="special">Мы собрали часто задаваемые вопросы и подготовили ответы на них
+                        <br><br>
+                        Вы всегда можете задать свой вопрос по почте <a href="#"><strong>prostohelp@gmail.com</strong></a>
+                        <br><br>
+                        Или написать нам в <a href="#"><strong>Telegram</strong></a>
+                        <br><br>
+                        С правовой информацией вы можете ознакомиться <a href="#"><strong>тут</strong></a>
+                    </p>
+                    
+                    <div class="btn"
+                            data-title="FAQ" 
+                            data-icon="#icon-tag" 
+                            data-content="content/faq.html"
+                            onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
+                        <svg class="icon small"><use href="#icon-tag"/></svg>
+                        <span>Посмотреть FAQ</span>
+                    </div>
+                    
+                </div>
+            </div> 
+        </div>
+
+        <div style="height: 120px;"></div>
+    
+    </div>
+
+    <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+
+            <!-- Компонент эффекта размытия -->
+            <div class="blur-overlay">
+                <div class="blur-layer"></div>
+            </div>
+
+            <div class="popup-header-panel-parent">
+                <div class="popup-header-panel" id="popup-header-panel" onclick="closePopup()">
+                    <div class="popup-header-title" id="popup-header-title">
+                        <svg class="icon big"><use href=""/></svg>
+                        <span></span>
+                    </div>
+                    <div class="close-popup-icon" aria-label="Закрыть попап"></div>
+                </div>
+            </div>
+            <div id="contentContainer" class="cont">
+                
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="footer-parent">
+        <div class="footer-button">
+            <svg style="margin-right: 8px;" color="white" width="32" height="32"><use href="#icon-hi"/></svg>
+            <span>Ваш навигатор эффективности</span>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="code.js"></script>
+
+</body>
+
+</html>
