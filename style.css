@@ -533,14 +533,14 @@ li:not(:last-child) {
     scrollbar-width: thin;
 }
 
+.popup-content.show {
+    transform: translateY(0);
+}
+
 /* Активное состояние для анимации */
 .popup-overlay.active {
     opacity: 1;
     visibility: visible;
-}
-
-.popup-overlay.active .popup-content {
-    transform: translateY(0);
 }
 
 .popup-header-panel-parent {
@@ -682,7 +682,7 @@ li:not(:last-child) {
 @media screen and (max-width: 992px) {
 
     .centered-section {
-        margin-block-start: 92px;
+        margin-block-start: 3rem;
     }
 
     .blur-overlay {

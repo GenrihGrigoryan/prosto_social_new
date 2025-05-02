@@ -50,10 +50,6 @@ function openPopup(title, iconId, contentFile) {
     popupTitle.querySelector('svg use').setAttribute('href', iconId);
 
     popup.classList.add('active');
-    // Разрешаем анимацию содержимого после того, как фон стал видимым
-    setTimeout(() => {
-        popupContent.style.transition = 'transform 0.5s cubic-bezier(0.3, 0, 0.2, 1)';
-    }, 10);
     
     // Загружаем содержимое из файла
     fetch(contentFile)
@@ -67,8 +63,9 @@ function openPopup(title, iconId, contentFile) {
             // Вставляем содержимое в контейнер
             contentContainer.innerHTML = content;
             
-            // Отображаем попап
-            popup.style.display = 'flex';
+            requestAnimationFrame(() => {
+                popupContent.classList.add('show');
+            });        
         })
         .catch(error => {
             console.error('Ошибка при загрузке содержимого:', error);
@@ -76,13 +73,13 @@ function openPopup(title, iconId, contentFile) {
             popup.style.display = 'flex';
         });
 
-        popup.scrollTop = popupContent.scrollTop = contentContainer.scrollTop = 0;
+    popup.scrollTop = popupContent.scrollTop = contentContainer.scrollTop = 0;
 }
 
 // Функция закрытия попапа с последовательной анимацией
 function closePopup() {
     // Сначала прячем содержимое
-    popupContent.style.transform = 'translateY(100%)';
+    popupContent.classList.remove('show');
     
     // После завершения анимации содержимого, начинаем плавное исчезновение фона
     setTimeout(() => {
@@ -100,7 +97,7 @@ function closePopup() {
             // Сбрасываем стили для следующего открытия
             popupContent.style.transition = '';
             popupContent.style.transform = '';
-        }, 300); // Длительность затухания фона
+        }, 500); // Длительность затухания фона
     }, 100); // Длительность анимации скрытия контента
 }
 
