@@ -175,12 +175,17 @@ li:not(:last-child) {
     align-items: center;
     padding: 16px;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 20px;
     font-weight: 650;
     color: var(--font-color);
     /* background-color: white; 
     transition: background-color 0.3s;*/
+    gap: 8px; /* <-- расстояние между текстом и иконкой */
+}
+
+.accordion-title {
+    flex: 1;
 }
 
 .accordion-icon {
@@ -226,8 +231,8 @@ li:not(:last-child) {
 .accordion-content-inner {
     padding: 0 0 20px;
     color: var(--font-color);
-    line-height: 22px;
-    font-size: 17px;
+    line-height: 19px;
+    font-size: 15px;
     font-weight: 450;
 }
 
@@ -270,7 +275,7 @@ li:not(:last-child) {
     font-weight: 700;
     position: absolute;
     opacity: 0;
-    transition: all 0.75s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .carousel-item.active {
@@ -668,18 +673,19 @@ li:not(:last-child) {
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 344px) {
+    
     .footer-button {
         font-size: 14px;
-    }
-
-    .carousel-container{
-        font-size: 18px;
     }
 
 }
 
 @media screen and (max-width: 992px) {
+
+    .carousel-container{
+        font-size: 18px;
+    }
 
     .wrapper{
         margin: 0 auto;
@@ -726,7 +732,7 @@ li:not(:last-child) {
     }
 
     .centered-section {
-        margin-block-start: 32px;
+        margin-block-start: 48px;
     }
 
     .tag {
@@ -798,4 +804,18 @@ li:not(:last-child) {
         --link-hover: #d04000;
 
     }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .popup-header-panel {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .popup-header-panel:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+    }
+    
+
 }
