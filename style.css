@@ -33,6 +33,10 @@ h6 {
     margin-block-end: 0;
 }
 
+h3 {
+    font-size: 24px;
+}
+
 a {
     color: var(--accent-color);
     text-underline-offset: 2px;
@@ -452,7 +456,6 @@ li:not(:last-child) {
     background-color: transparent;
     border: 1px solid var(--accent-color);
     color: var(--accent-color);
-    font: initial;
 
     position: absolute;
     right: 12px;
@@ -672,6 +675,35 @@ li:not(:last-child) {
 
     .carousel-container{
         font-size: 18px;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+
+    .centered-section {
+        margin-block-start: 92px;
+    }
+
+    .blur-overlay {
+        height: 94px;
+    }
+
+    .popup-header-panel {
+        margin: 0 16px;
+    }
+
+    .footer-parent {
+        bottom: 16px;
+    }
+
+    .footer-button {
+        margin: 0 16px;
+    }
+
+    .cont {
+        padding: 24px;
+        padding-top: 32px;
     }
 
 }

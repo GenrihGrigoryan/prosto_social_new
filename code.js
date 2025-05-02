@@ -36,18 +36,11 @@ const popupContent = popup.querySelector('.popup-content');
 const popupTitle = popup.querySelector('.popup-header-title');
 const contentContainer = popup.querySelector('#contentContainer');
 
-//const popupTitle = document.getElementById('popup-header-title');
-//const contentContainer = document.getElementById('contentContainer');
-
-// Функция открытия попапа с последовательной анимацией
 function openPopup(title, iconId, contentFile) {
     // Первый шаг: показываем фон
-    popup.classList.add('active');
-    // Разрешаем анимацию содержимого после того, как фон стал видимым
-    setTimeout(() => {
-        popupContent.style.transition = 'transform 0.5s cubic-bezier(0.3, 0, 0.2, 1)';
-    }, 10);
-    // Предотвращаем скролл основной страницы
+
+    contentContainer.innerHTML = '';
+
     document.body.style.overflow = 'hidden';
 
     // Устанавливаем заголовок попапа
@@ -56,6 +49,12 @@ function openPopup(title, iconId, contentFile) {
     // Устанавливаем иконку
     popupTitle.querySelector('svg use').setAttribute('href', iconId);
 
+    popup.classList.add('active');
+    // Разрешаем анимацию содержимого после того, как фон стал видимым
+    setTimeout(() => {
+        popupContent.style.transition = 'transform 0.5s cubic-bezier(0.3, 0, 0.2, 1)';
+    }, 10);
+    
     // Загружаем содержимое из файла
     fetch(contentFile)
         .then(response => {
@@ -77,9 +76,7 @@ function openPopup(title, iconId, contentFile) {
             popup.style.display = 'flex';
         });
 
-    popup.scrollTop = 0;
-    popupContent.scrollTop = 0;
-    contentContainer.scrollTop = 0;
+        popup.scrollTop = popupContent.scrollTop = contentContainer.scrollTop = 0;
 }
 
 // Функция закрытия попапа с последовательной анимацией
