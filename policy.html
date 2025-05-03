@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="utf-8">
+
+<head>
+
+    <title>Простое Сообщество</title>
+
+    <meta name="theme-color" content="#EAF1F4" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f1116" media="(prefers-color-scheme: dark)">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="prefetch" href="content/faq.html">
+    <link rel="prefetch" href="content/feedback.html">
+    <link rel="prefetch" href="content/free_material.html">
+    <link rel="prefetch" href="content/materials.html">
+
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+    <link rel="shortcut icon" href="favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="favicon/site.webmanifest" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Простое Сообщество" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    
+    <meta name="application-name" content="Простое Сообщество" />
+    <meta name="description" content="Ваш навигатор эффективности">
+
+    <meta property="og:site_name" content="Простое Сообщество" />
+    <meta property="og:image" content="preview.jpg">
+    <meta property="og:description" content="Ваш навигатор эффективности" />
+    <meta property="og:title" content="Простое Сообщество">
+    <meta property="og:type" content="profile">
+
+</head>
+
+<body>
+
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-shield" viewBox="0 -960 960 960">
+                <path d="m438-452-56-56q-12-12-28-12t-28 12q-12 12-12 28.5t12 28.5l84 85q12 12 28 12t28-12l170-170q12-12 12-28.5T636-593q-12-12-28.5-12T579-593L438-452Zm42 368q-7 0-13-1t-12-3q-135-45-215-166.5T160-516v-189q0-25 14.5-45t37.5-29l240-90q14-5 28-5t28 5l240 90q23 9 37.5 29t14.5 45v189q0 140-80 261.5T505-88q-6 2-12 3t-13 1Z"/>
+            </symbol>
+        </defs>
+    </svg>
+
+    <div class="popup-overlay active" id="popup">
+        <div class="popup-content show">
+
+            <!-- Компонент эффекта размытия -->
+            <div class="blur-overlay">
+                <div class="blur-layer"></div>
+            </div>
+
+            <div class="popup-header-panel-parent">
+                <div class="popup-header-panel" id="popup-header-panel" onclick="">
+                    <div class="popup-header-title" id="popup-header-title">
+                        <svg class="icon big"><use href="#icon-shield"/></svg>
+                        <span>Юридическая информация</span>
+                    </div>
+                    <div class="close-popup-icon" aria-label="Закрыть попап"></div>
+                </div>
+            </div>
+            <div id="contentContainer" class="cont">
+                Содержимое
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+</html>
