@@ -247,7 +247,7 @@ li:not(:last-child) {
 }
 
 .parent {
-    justify-content: space-between;
+    justify-content: center; /* space-between; */
     min-height: 100dvh;
     flex-direction: column;
     display: flex;
@@ -267,7 +267,7 @@ li:not(:last-child) {
 }
 
 .carousel-container {
-    font-size: 20px;
+    font-size: clamp(18px, 4.5vw, 32px); /* 20px; */
     display: inline-flex;
     align-items: center;
     height: 30px;
@@ -276,7 +276,7 @@ li:not(:last-child) {
 
 .carousel {
     position: relative;
-    width: 100px;
+    width: clamp(100px, 15vw, 150px);
     height: 30px;
     direction: rtl;
 }
@@ -711,7 +711,58 @@ li:not(:last-child) {
     margin-right: 8px;
 }
 
+.embla__controls {
+    display: none;
+    /* position: absolute; */
+    padding-inline: 20px;
+    margin-top: -16px;
+    justify-content: flex-end;
+  }
 
+  .embla__buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    align-items: center;
+  }
+  .embla__button {
+    opacity: 1;
+    appearance: none;
+    background-color: transparent;
+    touch-action: manipulation;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 3.6rem;
+    height: 3.6rem;
+    z-index: 1;
+    border-radius: 50%;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity ease-in-out 0.2s;
+    transition: transform ease-in-out 0.1s;
+  }
+
+  .embla__button:disabled {
+    opacity: 0.2;
+  }
+
+  .embla__button:active {
+    transform: scale(0.9); /* чуть уменьшается при нажатии */
+  }
+
+  .embla__button__svg {
+    width: 35%;
+    height: 35%;
+  }
+
+
+/*
 @media (pointer: coarse) and (hover: none) {
     .card-wrapper {
       overflow-x: auto;
@@ -719,7 +770,7 @@ li:not(:last-child) {
       -webkit-overflow-scrolling: touch;
     }
   }
-
+*/
 
 @media screen and (max-width: 344px) {
     
@@ -731,8 +782,8 @@ li:not(:last-child) {
 
 @media screen and (max-width: 992px) {
 
-    .carousel-container{
-        font-size: 18px;
+    .embla__controls{
+        display: flex;
     }
 
     .wrapper{
@@ -774,10 +825,6 @@ li:not(:last-child) {
 
 @media screen and (min-width: 992px) {
 
-    .carousel-container{
-        font-size: 24px;
-    }
-
     .testimonial {
         font-size: 14px;
         line-height: 14px;
@@ -785,6 +832,7 @@ li:not(:last-child) {
 
     .centered-section {
         margin-block-start: 48px;
+        margin-block-end: 24px;
     }
 
     .tag {
@@ -820,13 +868,6 @@ li:not(:last-child) {
     }
 }
 
-@media screen and (min-width: 1100px) {
-
-    .carousel-container{
-        font-size: 28px;
-    }
-
-}
 
 @media (prefers-color-scheme: light) {
     :root {
@@ -840,8 +881,6 @@ li:not(:last-child) {
         --link-hover: #d04000;
     }
 }
-
-
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
@@ -871,3 +910,4 @@ li:not(:last-child) {
     
 
 }
+

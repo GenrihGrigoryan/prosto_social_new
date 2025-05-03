@@ -136,155 +136,79 @@ function onToggleItem(item) {
 
 //import EmblaCarousel from 'embla-carousel';
 
-let embla = null;
+
+const OPTIONS = { dragFree: true, containScroll: 'trimSnaps' }
+
+let embla = null
+let removeButtonHandlers = null
 
 function initEmblaIfNeeded() {
-  // Проверка на мобильные устройства — выходим сразу
+  const emblaNode = document.querySelector('.embla')
+  const viewportNode = emblaNode.querySelector('.embla__viewport')
+  const containerNode = viewportNode.querySelector('.embla__container')
+  const prevBtnNode = emblaNode.querySelector('.embla__button--prev')
+  const nextBtnNode = emblaNode.querySelector('.embla__button--next')
+  const snapDisplayNode = emblaNode.querySelector('.embla__selected-snap-display')
+
+  /*
+  // Не инициализировать на тач-устройствах
   if (window.matchMedia('(pointer: coarse)').matches) {
     if (embla) {
-      embla.destroy();
-      embla = null;
+      embla.destroy()
+      embla = null
+      if (removeButtonHandlers) {
+        removeButtonHandlers()
+        removeButtonHandlers = null
+      }
     }
-    return;
+    return
   }
+*/
 
-  const viewport = document.querySelector('.embla__viewport');
-  const container = viewport.querySelector('.embla__container');
-
-  const viewportWidth = viewport.offsetWidth;
-  const containerWidth = container.scrollWidth;
-
-  const needsCarousel = containerWidth > viewportWidth;
+  const viewportWidth = viewportNode.offsetWidth
+  const containerWidth = containerNode.scrollWidth
+  const needsCarousel = containerWidth > viewportWidth
 
   if (embla && !needsCarousel) {
-    embla.destroy();
-    embla = null;
-    container.classList.remove('is-dragging');
-    return;
+    embla.destroy()
+    embla = null
+    if (removeButtonHandlers) {
+      removeButtonHandlers()
+      removeButtonHandlers = null
+    }
+    containerNode.classList.remove('is-dragging')
+    return
   }
 
   if (!embla && needsCarousel) {
-    embla = EmblaCarousel(viewport, {
-      dragFree: true,
-      containScroll: 'trimSnaps',
-    });
+    embla = EmblaCarousel(viewportNode, OPTIONS)
 
-    embla.on('pointerDown', () => container.classList.add('is-dragging'));
-    embla.on('pointerUp', () => container.classList.remove('is-dragging'));
-    embla.on('pointerCancel', () => container.classList.remove('is-dragging'));
+    // Drag-класс
+    embla.on('pointerDown', () => containerNode.classList.add('is-dragging'))
+    embla.on('pointerUp', () => containerNode.classList.remove('is-dragging'))
+    embla.on('pointerCancel', () => containerNode.classList.remove('is-dragging'))
+
+    // Кнопки и индикатор
+    removeButtonHandlers = window.addPrevNextBtnsClickHandlers(
+        embla,
+        prevBtnNode,
+        nextBtnNode
+      )
+    //updateSelectedSnapDisplay(embla, snapDisplayNode)
+
+    embla.on('destroy', () => {
+      if (removeButtonHandlers) {
+        removeButtonHandlers()
+        removeButtonHandlers = null
+      }
+    })
   }
 }
 
-// Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', () => {
-  initEmblaIfNeeded();
-});
+  initEmblaIfNeeded()
+})
 
-// Проверка при ресайзе
 window.addEventListener('resize', () => {
-  initEmblaIfNeeded();
-});
-
-
-/*
-document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.querySelector('.card-wrapper');
-  
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-  
-    // Параметры подстройки
-    const dragSensitivity   = 0.6;    // <1 — менее чувствительно, >1 — более
-    const inertiaMultiplier = 0.8;    // <1 — инерция слабее
-    const friction          = 0.0012; // чем больше — тем быстрее тормозит
-  
-    let pointerDown = false,
-        startX = 0,
-        scrollStart = 0,
-        velocity = 0,
-        lastTime = 0,
-        lastX = 0,
-        frame;
-  
-    const onDown = e => {
-      pointerDown = true;
-      slider.classList.add('active');
-      startX = e.pageX - slider.offsetLeft;
-      scrollStart = slider.scrollLeft;
-      lastX = e.pageX;
-      lastTime = performance.now();
-      velocity = 0;
-      cancelAnimationFrame(frame);
-      slider.setPointerCapture(e.pointerId);
-    };
-  
-    const onMove = e => {
-      if (!pointerDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const dx = x - startX;
-      // применяем dragSensitivity
-      slider.scrollLeft = scrollStart - dx * dragSensitivity;
-  
-      const now = performance.now();
-      const dt = (now - lastTime) || 16;
-      velocity = (e.pageX - lastX) / dt;
-      lastX = e.pageX;
-      lastTime = now;
-    };
-  
-    const onUp = e => {
-      if (!pointerDown) return;
-      pointerDown = false;
-      slider.classList.remove('active');
-      slider.releasePointerCapture(e.pointerId);
-  
-      const step = () => {
-        const now = performance.now();
-        const dt = now - lastTime;
-        lastTime = now;
-  
-        // инерционный с учётом множителя
-        const move = velocity * dt * inertiaMultiplier;
-        slider.scrollLeft -= move;
-  
-        // экспоненциальное трение
-        velocity *= Math.exp(-friction * dt);
-  
-        // продолжать, пока скорость ощутима
-        if (Math.abs(velocity) > 0.02) {
-          frame = requestAnimationFrame(step);
-        } else {
-          // bounce
-          const maxScroll = slider.scrollWidth - slider.clientWidth;
-          let target = null;
-          if (slider.scrollLeft < 0) target = 0;
-          if (slider.scrollLeft > maxScroll) target = maxScroll;
-          if (target !== null) {
-            // простая анимация отскока
-            const start = slider.scrollLeft;
-            const dist  = target - start;
-            const dur   = 300;
-            let t0 = null;
-            const easeOutCubic = t => (--t)*t*t+1;
-            const animate = time => {
-              if (!t0) t0 = time;
-              const t = Math.min((time - t0)/dur, 1);
-              slider.scrollLeft = start + dist * easeOutCubic(t);
-              if (t < 1) requestAnimationFrame(animate);
-            };
-            requestAnimationFrame(animate);
-          }
-        }
-      };
-  
-      frame = requestAnimationFrame(step);
-    };
-  
-    slider.addEventListener('pointerdown',  onDown);
-    slider.addEventListener('pointermove',  onMove, { passive: false });
-    slider.addEventListener('pointerup',    onUp);
-    slider.addEventListener('pointercancel', onUp);
-  });
-*/
-
-
+  initEmblaIfNeeded()
+})
