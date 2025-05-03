@@ -94,6 +94,8 @@ function closePopup() {
             popup.classList.remove('active');
             popup.style.opacity = ''; // Сбрасываем inline стиль opacity
             
+            contentContainer.innerHTML = '';
+
             // Сбрасываем стили для следующего открытия
             popupContent.style.transition = '';
             popupContent.style.transform = '';
@@ -137,7 +139,14 @@ function onToggleItem(item) {
 //import EmblaCarousel from 'embla-carousel';
 
 
-const OPTIONS = { dragFree: true, containScroll: 'trimSnaps' }
+const OPTIONS = { 
+    loop: false,
+    align: 'start',
+    dragFree: true,
+    containScroll: 'trimSnaps',
+    speed: 10,
+    dragThreshold: 1
+}
 
 let embla = null
 let removeButtonHandlers = null
@@ -189,7 +198,7 @@ function initEmblaIfNeeded() {
     embla.on('pointerCancel', () => containerNode.classList.remove('is-dragging'))
 
     // Кнопки и индикатор
-    removeButtonHandlers = window.addPrevNextBtnsClickHandlers(
+    removeButtonHandlers = addPrevNextBtnsClickHandlers(
         embla,
         prevBtnNode,
         nextBtnNode
@@ -204,6 +213,43 @@ function initEmblaIfNeeded() {
     })
   }
 }
+
+function addPrevNextBtnsClickHandlers (emblaApi, prevBtn, nextBtn) {
+    const scrollPrev = () => {
+      emblaApi.scrollPrev()
+    }
+    const scrollNext = () => {
+      emblaApi.scrollNext()
+    }
+  
+    prevBtn.addEventListener('click', scrollPrev, false)
+    nextBtn.addEventListener('click', scrollNext, false)
+  
+    const togglePrevNextBtnsState = () => {
+      if (emblaApi.canScrollPrev()) {
+        prevBtn.classList.remove('is-disabled')
+      } else {
+        prevBtn.classList.add('is-disabled')
+      }
+  
+      if (emblaApi.canScrollNext()) {
+        nextBtn.classList.remove('is-disabled')
+      } else {
+        nextBtn.classList.add('is-disabled')
+      }
+    }
+  
+    emblaApi
+      .on('select', togglePrevNextBtnsState)
+      .on('init', togglePrevNextBtnsState)
+      .on('reInit', togglePrevNextBtnsState)
+  
+    // Возвращаем функцию очистки
+    return () => {
+      prevBtn.removeEventListener('click', scrollPrev, false)
+      nextBtn.removeEventListener('click', scrollNext, false)
+    }
+  }
 
 document.addEventListener('DOMContentLoaded', () => {
   initEmblaIfNeeded()
