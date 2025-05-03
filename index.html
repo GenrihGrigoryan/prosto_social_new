@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <link rel="stylesheet" href="https://unpkg.com/embla-carousel/embla-carousel.css" />
+
     <link rel="prefetch" href="content/faq.html">
     <link rel="prefetch" href="content/feedback.html">
     <link rel="prefetch" href="content/free_material.html">
@@ -136,176 +138,178 @@
 
         </div>
 
-        <div class="wrapper">
-            <div class="card-wrapper">
-                <div class="card">
-                    <div class="circle">1</div>
-                    <h3>Полезные материалы</h3>
-                    <p class="special">Лучшие практики, подтверждённые наукой и личным опытом</p>
-                    <p class="desc"><strong>Более</strong> 300</p>
-                    <div class="tags">
-                        <div class="tag">#статей</div>
-                        <div class="tag">#видео</div>
-                        <div class="tag">#стримов</div>
-                        <div class="tag">#лекций</div>
-                        <div class="tag">#обзоров</div>
-                        <div class="tag">#курсов</div>
-                    </div>
-                    <p class="desc"><strong>О том</strong>, как вам стать</p>
-                    <div class="tags">
-                        <div class="tag">#продуктивным</div>
-                        <div class="tag">#счастливым</div>
-                        <div class="tag">#здоровым</div>
-                        <div class="tag">#сильным</div>
-                        <div class="tag">#мудрым</div>
-                        <!--
-                        <div class="tag">#состоятельным</div>
-                        <div class="tag">#креативным</div>
-                        -->
-                    </div>
-                    <div class="btn"
-                            data-title="Материалы Сообщества" 
-                            data-icon="#icon-book" 
-                            data-content="content/materials.html" 
-                            onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
-                        <svg class="icon small"><use href="#icon-book"/></svg>
-                        <span>Ознакомиться с базой знаний</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="circle">2</div>
-                    <h3>Регулярность</h3>
-                    <p class="special">Сформируйте образ жизни, который поддерживает ваши цели благодаря продуктивной среде</p>
-                    <p class="desc"><strong>Каждый</strong> месяц:</p>
-                    <div class="tags-list">
-                        <div class="tag"><strong>2 стрима</strong> с тонной науки</div>
-                        <div class="tag"><strong>30</strong> напоминаний и <strong>лайфхаков</strong></div>
-                        <div class="tag"><strong>10 статей</strong> об эффективности</div>
-                        <!--<div class="tag"><strong>20+</strong> интересных <strong>обсуждений</strong></div>-->
-                        <div class="tag"><strong>15+</strong> ответов на <strong>ваши вопросы</strong></div>
-                    </div>
-
-                    <div class="btn"
-                            data-title="Недавний материал" 
-                            data-icon="#icon-bookmark" 
-                            data-content="content/free_material.html"
-                            onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
-                        <svg class="icon small"><use href="#icon-bookmark"/></svg>
-                        <span>Посмотреть недавний материал</span>
-                    </div>
-
-                </div>
-
-                <div class="card">
-                    <div class="circle">3</div>
-                    <h3>Живое сообщество</h3>
-                    <p class="special"><strong>2500+</strong> активных участников, разделяющих ценности саморазвития</p>
-                    <p class="desc">Отзыв от <strong>@govard</strong>:</p>
-                    <div class="testimonial">
-                        <img style="
-                        position: absolute;
-                        width: 28px;
-                        height: 28px;
-                        right: 8px;
-                        bottom: 8px;" src="avatars/olex.png">
-                        <div>Каждый день напоминая зачем нужны маленькие интервенции я больше внедряю их в свою рутину. Сообщество стало для меня сильным мотиватором<br> и источником знаний</div>
-                        <!--
-                        <div class="user">
-                          <div>@govard</div>
-                          <img src="avatars/olex.png">
+        <div class="wrapper embla">
+            <div class="embla__viewport">
+                <div class="card-wrapper embla__container">
+                    <div class="card embla__slide">
+                        <div class="circle">1</div>
+                        <h3>Полезные материалы</h3>
+                        <p class="special">Лучшие практики, подтверждённые наукой и личным опытом</p>
+                        <p class="desc"><strong>Более</strong> 300</p>
+                        <div class="tags">
+                            <div class="tag">#статей</div>
+                            <div class="tag">#видео</div>
+                            <div class="tag">#стримов</div>
+                            <div class="tag">#лекций</div>
+                            <div class="tag">#обзоров</div>
+                            <div class="tag">#курсов</div>
                         </div>
-                        -->
+                        <p class="desc"><strong>О том</strong>, как вам стать</p>
+                        <div class="tags">
+                            <div class="tag">#продуктивным</div>
+                            <div class="tag">#счастливым</div>
+                            <div class="tag">#здоровым</div>
+                            <div class="tag">#сильным</div>
+                            <div class="tag">#мудрым</div>
+                            <!--
+                            <div class="tag">#состоятельным</div>
+                            <div class="tag">#креативным</div>
+                            -->
+                        </div>
+                        <div class="btn"
+                                data-title="Материалы Сообщества" 
+                                data-icon="#icon-book" 
+                                data-content="content/materials.html" 
+                                onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
+                            <svg class="icon small"><use href="#icon-book"/></svg>
+                            <span>Ознакомиться с базой знаний</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="circle">2</div>
+                        <h3>Регулярность</h3>
+                        <p class="special">Сформируйте образ жизни, который поддерживает ваши цели благодаря продуктивной среде</p>
+                        <p class="desc"><strong>Каждый</strong> месяц:</p>
+                        <div class="tags-list">
+                            <div class="tag"><strong>2 стрима</strong> с тонной науки</div>
+                            <div class="tag"><strong>30</strong> напоминаний и <strong>лайфхаков</strong></div>
+                            <div class="tag"><strong>10 статей</strong> об эффективности</div>
+                            <!--<div class="tag"><strong>20+</strong> интересных <strong>обсуждений</strong></div>-->
+                            <div class="tag"><strong>15+</strong> ответов на <strong>ваши вопросы</strong></div>
+                        </div>
+
+                        <div class="btn"
+                                data-title="Недавний материал" 
+                                data-icon="#icon-bookmark" 
+                                data-content="content/free_material.html"
+                                onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
+                            <svg class="icon small"><use href="#icon-bookmark"/></svg>
+                            <span>Посмотреть недавний материал</span>
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+                        <div class="circle">3</div>
+                        <h3>Живое сообщество</h3>
+                        <p class="special"><strong>2500+</strong> активных участников, разделяющих ценности саморазвития</p>
+                        <p class="desc">Отзыв от <strong>@govard</strong>:</p>
+                        <div class="testimonial">
+                            <img style="
+                            position: absolute;
+                            width: 28px;
+                            height: 28px;
+                            right: 8px;
+                            bottom: 8px;" src="avatars/olex.png">
+                            <div>Каждый день напоминая зачем нужны маленькие интервенции я больше внедряю их в свою рутину. Сообщество стало для меня сильным мотиватором<br> и источником знаний</div>
+                            <!--
+                            <div class="user">
+                            <div>@govard</div>
+                            <img src="avatars/olex.png">
+                            </div>
+                            -->
+                            
+                        </div>
+
+                        <div class="btn"
+                                data-title="Отзывы участников" 
+                                data-icon="#icon-star" 
+                                data-content="content/feedback.html"
+                                onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
+                            <svg class="icon small"><use href="#icon-star"/></svg>
+                            <span>Читать все отзывы</span>
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+                        <div class="circle">4</div>
+                        <h3>Бесплатная рассылка</h3>
+                        <p class="special">Подпишитесь на специальную цепочку писем, которая за год увеличит вашу личную эффективность <strong>в два раза</strong></p>
+                        <p class="desc"><strong>Внутри:</strong></p>
+                        <div class="tags-list">
+                            <div class="tag"><strong>300+</strong> писем о продуктивности</div>
+                            <div class="tag">только <strong>самое главное</strong>, коротко</div>
+                            <div class="tag">научная <strong>доказательность</strong></div>
+                        </div>
+                        <div class="btn">
+                            <svg class="icon small"><use href="#icon-inbox"/></svg>
+                            <span>Подписаться на рассылку</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="circle">5</div>
+                        <h3>Бесплатные материалы</h3>
+                        <p class="special">Ознакомьтесь с контентом, который мы публикуем в открытом доступе – там много полезного</p>
+                        <p class="desc"><strong>YouTube</strong> каналы:</p>
+                        <div class="tags-list">
+                            <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Простые Мысли</a>
+                            <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Простая Академия</a>
+                            <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Просто Глеб</a>
+                            <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Простое Сообщество</a>
+                        </div>
+                        <div class="btn">
+                            <svg class="icon small"><use href="#icon-telegram"/></svg>
+                            <span>Канал в Telegram</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="circle">6</div>
+                        <h3>Остались вопросы?</h3>
+                        <p class="special">Мы собрали часто задаваемые вопросы и подготовили ответы на них
+                            <br><br>
+                            Вы всегда можете задать свой вопрос нам в <a href="#"><strong>Telegram</strong></a>
+                            <br><br>
+                            Или написать нам на почту <a href="#"><strong>prostohelp@gmail.com</strong></a>
+                            <br><br>
+                            С правовой информацией вы можете ознакомиться <a href="#"><strong>тут</strong></a>
+                        </p>
                         
-                    </div>
+                        <div style="
+                            position: absolute;
+                            left: 12px;
+                            bottom: 13px;
+                            display: inline-flex;
+                            align-items: center;
 
-                      <div class="btn"
-                            data-title="Отзывы участников" 
-                            data-icon="#icon-star" 
-                            data-content="content/feedback.html"
-                            onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
-                        <svg class="icon small"><use href="#icon-star"/></svg>
-                        <span>Читать все отзывы</span>
-                    </div>
+                            cursor: pointer;
+                            background-color: transparent;
+                            
+                            color: var(--font-color);
+                            border-radius: 12px;
+                            padding: 8px 10px;
+                            text-decoration: none;
+                            font-size: 12px;
+                            line-height: 14px;
+                            font-weight: 700;
+                        "><svg class="icon small"><use href="#icon-person"/></svg><a href="#">Профиль</a></div>
 
-                </div>
-
-                <div class="card">
-                    <div class="circle">4</div>
-                    <h3>Бесплатная рассылка</h3>
-                    <p class="special">Подпишитесь на специальную цепочку писем, которая за год увеличит вашу личную эффективность <strong>в два раза</strong></p>
-                    <p class="desc"><strong>Внутри:</strong></p>
-                    <div class="tags-list">
-                        <div class="tag"><strong>300+</strong> писем о продуктивности</div>
-                        <div class="tag">только <strong>самое главное</strong>, коротко</div>
-                        <div class="tag">научная <strong>доказательность</strong></div>
-                    </div>
-                    <div class="btn">
-                        <svg class="icon small"><use href="#icon-inbox"/></svg>
-                        <span>Подписаться на рассылку</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="circle">5</div>
-                    <h3>Бесплатные материалы</h3>
-                    <p class="special">Ознакомьтесь с контентом, который мы публикуем в открытом доступе – там много полезного</p>
-                    <p class="desc"><strong>YouTube</strong> каналы:</p>
-                    <div class="tags-list">
-                        <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Простые Мысли</a>
-                        <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Простая Академия</a>
-                        <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Просто Глеб</a>
-                        <a href="#" class="tag-link"><svg class="icon small"><use href="#icon-youtube"/></svg>Простое Сообщество</a>
-                    </div>
-                    <div class="btn">
-                        <svg class="icon small"><use href="#icon-telegram"/></svg>
-                        <span>Канал в Telegram</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="circle">6</div>
-                    <h3>Остались вопросы?</h3>
-                    <p class="special">Мы собрали часто задаваемые вопросы и подготовили ответы на них
-                        <br><br>
-                        Вы всегда можете задать свой вопрос нам в <a href="#"><strong>Telegram</strong></a>
-                        <br><br>
-                        Или написать нам на почту <a href="#"><strong>prostohelp@gmail.com</strong></a>
-                        <br><br>
-                        С правовой информацией вы можете ознакомиться <a href="#"><strong>тут</strong></a>
-                    </p>
-                    
-                    <div style="
-                        position: absolute;
-                        left: 12px;
-                        bottom: 13px;
-                        display: inline-flex;
-                        align-items: center;
-
-                        cursor: pointer;
-                        background-color: transparent;
+                        <div class="btn"
+                                data-title="FAQ" 
+                                data-icon="#icon-tag" 
+                                data-content="content/faq.html"
+                                onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
+                            <svg class="icon small"><use href="#icon-tag"/></svg>
+                            <span>Посмотреть FAQ</span>
+                        </div>
                         
-                        color: var(--font-color);
-                        border-radius: 12px;
-                        padding: 8px 10px;
-                        text-decoration: none;
-                        font-size: 12px;
-                        line-height: 14px;
-                        font-weight: 700;
-                    "><svg class="icon small"><use href="#icon-person"/></svg><a href="#">Профиль</a></div>
-
-                    <div class="btn"
-                            data-title="FAQ" 
-                            data-icon="#icon-tag" 
-                            data-content="content/faq.html"
-                            onclick="openPopup(this.dataset.title, this.dataset.icon, this.dataset.content)">
-                        <svg class="icon small"><use href="#icon-tag"/></svg>
-                        <span>Посмотреть FAQ</span>
-                    </div>
-                    
+                        </div>
+                    </div> 
                 </div>
-            </div> 
-        </div>
+            </div>
 
         <div style="height: 120px;"></div>
     
@@ -342,6 +346,7 @@
         </div>
     </div>
 
+    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
     <script type="text/javascript" src="code.js"></script>
 
 </body>

@@ -306,6 +306,19 @@ li:not(:last-child) {
     transform: translateY(-36px);
 }
 
+.embla__viewport {
+    overflow: hidden;              /* прячем native-scrollbar */
+    position: relative;
+}
+
+.embla__container {
+    display: flex;
+}
+
+/* Скрываем скроллбар (для Firefox, Edge) */
+.embla__viewport::-webkit-scrollbar { display: none; }
+.embla__viewport { -ms-overflow-style: none; scrollbar-width: none; }
+
 .wrapper {
     position: relative;
     width: 100%;
@@ -331,9 +344,17 @@ li:not(:last-child) {
     display: flex;
     justify-content: flex-start;
 
+    
+    overflow-x: visible;
+    scroll-behavior: auto;
+    -webkit-overflow-scrolling: auto;
+    
+    /* было до подключения листалки
     overflow-x: auto;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    */
+
     scrollbar-width: none;
     /* Firefox */
     -ms-overflow-style: none;
@@ -696,6 +717,15 @@ li:not(:last-child) {
     height: 20px;
     margin-right: 8px;
 }
+
+
+@media (pointer: coarse) and (hover: none) {
+    .card-wrapper {
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
 
 
 @media screen and (max-width: 344px) {

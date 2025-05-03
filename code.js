@@ -122,7 +122,28 @@ function onToggleItem(item) {
 //--------
 // Листатель для десктопа
 
+document.addEventListener('DOMContentLoaded', () => {
+    // на тачах пусть будет нативный скролл
+    if (window.matchMedia('(pointer: coarse)').matches) return;
 
+    const viewport = document.querySelector('.embla__viewport');
+    const container = viewport.querySelector('.embla__container');
+
+    const embla = EmblaCarousel(viewport, {
+      loop: false,
+      align: 'start',
+      dragFree: true,
+      containScroll: 'trimSnaps',
+      speed: 10,
+      dragThreshold: 1
+    });
+
+    embla.on('pointerDown', ()  => container.classList.add('is-dragging'));
+    embla.on('pointerUp',   ()  => container.classList.remove('is-dragging'));
+    embla.on('pointerCancel', () => container.classList.remove('is-dragging'));
+  });
+
+/*
 document.addEventListener('DOMContentLoaded', () => {
     const slider = document.querySelector('.card-wrapper');
   
@@ -221,6 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
     slider.addEventListener('pointerup',    onUp);
     slider.addEventListener('pointercancel', onUp);
   });
-
+*/
 
 
