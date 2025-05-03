@@ -124,6 +124,16 @@ function onToggleItem(item) {
 
 document.addEventListener('DOMContentLoaded', () => {
     // на тачах пусть будет нативный скролл
+
+    const isLikelyMac = () => {
+        if (navigator.userAgentData?.platform) {
+          return navigator.userAgentData.platform.toLowerCase().includes('mac');
+        }
+        return navigator.userAgent.toLowerCase().includes('mac');
+      };
+    
+    const isMacTrackpad = isLikelyMac() && window.matchMedia('(pointer: fine)').matches;
+
     if (window.matchMedia('(pointer: coarse)').matches) return;
 
     const viewport = document.querySelector('.embla__viewport');

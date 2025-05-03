@@ -307,12 +307,7 @@ li:not(:last-child) {
 }
 
 .embla__viewport {
-    overflow: hidden;              /* прячем native-scrollbar */
     position: relative;
-}
-
-.embla__container {
-    display: flex;
 }
 
 /* Скрываем скроллбар (для Firefox, Edge) */
@@ -325,10 +320,8 @@ li:not(:last-child) {
     margin: 0 auto;
 }
 
-.card-wrapper::-webkit-scrollbar {
-    display: none;
-    /* Chrome, Safari */
-}
+.card-wrapper::-webkit-scrollbar { display: none; /* Chrome, Safari */ }
+
 
 .card-wrapper {
         /* WebKit (Chrome, Safari, iOS) */
