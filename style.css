@@ -170,15 +170,6 @@ li:not(:last-child) {
 }
 
 .accordion-header {
-        /* WebKit (Chrome, Safari, iOS) */
-    -webkit-user-select: none;
-    /* Firefox */
-    -moz-user-select: none;
-    /* IE10+/Edge */
-    -ms-user-select: none;
-    /* Стандартное свойство */
-    user-select: none;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -262,7 +253,8 @@ li:not(:last-child) {
 .centered-section {
     align-items: center;
     justify-content: center;
-    margin-block-start: 48px;
+    margin-block-start: clamp(16px, 3.5vw, 32px);
+    margin-block-end: clamp(0px, 1.5vw, 16px);
     display: flex;
 }
 
@@ -324,15 +316,6 @@ li:not(:last-child) {
 
 
 .card-wrapper {
-        /* WebKit (Chrome, Safari, iOS) */
-    -webkit-user-select: none;
-    /* Firefox */
-    -moz-user-select: none;
-    /* IE10+/Edge */
-    -ms-user-select: none;
-    /* Стандартное свойство */
-    user-select: none;
-
     padding: 24px;
     display: flex;
     justify-content: flex-start;
@@ -726,6 +709,13 @@ li:not(:last-child) {
     align-items: center;
   }
 
+  .unselectable{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
   .embla__button {
     opacity: 1;
     cursor: pointer;
@@ -737,11 +727,6 @@ li:not(:last-child) {
     align-items: center;
     justify-content: center;
     transition: opacity 0.2s ease-in-out, transform 0.1s ease;
-
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 
     background-color: transparent;
     -webkit-tap-highlight-color: transparent;
@@ -790,9 +775,11 @@ li:not(:last-child) {
         margin-top: 32px;
     }
 
+    /*
     .centered-section {
         margin-block-start: 3rem;
     }
+    */
 
     .blur-overlay {
         height: 94px;
@@ -829,10 +816,12 @@ li:not(:last-child) {
         line-height: 14px;
     }
 
+    /*
     .centered-section {
         margin-block-start: 48px;
         margin-block-end: 24px;
     }
+    */
 
     .tag {
         line-height: 22px;
