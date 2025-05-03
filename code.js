@@ -141,7 +141,6 @@ function onToggleItem(item) {
 
 const OPTIONS = { 
     loop: false,
-    align: 'start',
     dragFree: true,
     containScroll: 'trimSnaps',
     speed: 10,
