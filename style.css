@@ -357,7 +357,7 @@ li:not(:last-child) {
 
 .card-wrapper.active {
     cursor: grabbing;
-  }
+}
 
 .card {
     flex: 0 0 264px;
@@ -846,6 +846,7 @@ li:not(:last-child) {
     }
 
     .card-wrapper {
+        cursor: default;
         display: grid;
         grid-template-columns: repeat(3, 304px);
         grid-template-rows: repeat(2, auto);
