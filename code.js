@@ -120,11 +120,8 @@ function onToggleItem(item) {
 }
 
 //--------
-// Листатель для десктопа
 
-document.addEventListener('DOMContentLoaded', () => {
-    // на тачах пусть будет нативный скролл
-
+    /*
     const isLikelyMac = () => {
         if (navigator.userAgentData?.platform) {
           return navigator.userAgentData.platform.toLowerCase().includes('mac');
@@ -133,25 +130,61 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     
     const isMacTrackpad = isLikelyMac() && window.matchMedia('(pointer: fine)').matches;
+    */
 
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+// Листатель для десктопа
 
-    const viewport = document.querySelector('.embla__viewport');
-    const container = viewport.querySelector('.embla__container');
+//import EmblaCarousel from 'embla-carousel';
 
-    const embla = EmblaCarousel(viewport, {
-      loop: false,
-      align: 'start',
+let embla = null;
+
+function initEmblaIfNeeded() {
+  // Проверка на мобильные устройства — выходим сразу
+  if (window.matchMedia('(pointer: coarse)').matches) {
+    if (embla) {
+      embla.destroy();
+      embla = null;
+    }
+    return;
+  }
+
+  const viewport = document.querySelector('.embla__viewport');
+  const container = viewport.querySelector('.embla__container');
+
+  const viewportWidth = viewport.offsetWidth;
+  const containerWidth = container.scrollWidth;
+
+  const needsCarousel = containerWidth > viewportWidth;
+
+  if (embla && !needsCarousel) {
+    embla.destroy();
+    embla = null;
+    container.classList.remove('is-dragging');
+    return;
+  }
+
+  if (!embla && needsCarousel) {
+    embla = EmblaCarousel(viewport, {
       dragFree: true,
       containScroll: 'trimSnaps',
-      speed: 10,
-      dragThreshold: 1
     });
 
-    embla.on('pointerDown', ()  => container.classList.add('is-dragging'));
-    embla.on('pointerUp',   ()  => container.classList.remove('is-dragging'));
+    embla.on('pointerDown', () => container.classList.add('is-dragging'));
+    embla.on('pointerUp', () => container.classList.remove('is-dragging'));
     embla.on('pointerCancel', () => container.classList.remove('is-dragging'));
-  });
+  }
+}
+
+// Инициализация при загрузке
+document.addEventListener('DOMContentLoaded', () => {
+  initEmblaIfNeeded();
+});
+
+// Проверка при ресайзе
+window.addEventListener('resize', () => {
+  initEmblaIfNeeded();
+});
+
 
 /*
 document.addEventListener('DOMContentLoaded', () => {
