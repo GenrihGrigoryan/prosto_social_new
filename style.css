@@ -715,7 +715,7 @@ li:not(:last-child) {
     display: none;
     /* position: absolute; */
     padding-inline: 20px;
-    margin-top: -16px;
+    margin-top: -20px;
     justify-content: flex-end;
   }
 
@@ -727,33 +727,23 @@ li:not(:last-child) {
   }
   .embla__button {
     opacity: 1;
-    appearance: none;
-    background-color: transparent;
-    touch-action: manipulation;
-    display: inline-flex;
-    text-decoration: none;
     cursor: pointer;
-    border: 0;
-    padding: 0;
-    margin: 0;
     width: 3.6rem;
     height: 3.6rem;
     z-index: 1;
-    border-radius: 50%;
     color: var(--accent-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity ease-in-out 0.2s;
-    transition: transform ease-in-out 0.1s;
+    transition: opacity 0.2s ease-in-out, transform 0.1s ease;
   }
 
-  .embla__button:disabled {
+  .is-disabled {
     opacity: 0.2;
   }
 
-  .embla__button:active {
-    transform: scale(0.9); /* чуть уменьшается при нажатии */
+  .embla__button:active:not(.is-disabled) {
+    transform: scale(0.9);
   }
 
   .embla__button__svg {

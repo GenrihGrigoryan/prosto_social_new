@@ -12,15 +12,15 @@ window.addPrevNextBtnsClickHandlers = function (emblaApi, prevBtn, nextBtn) {
 
   const togglePrevNextBtnsState = () => {
     if (emblaApi.canScrollPrev()) {
-      prevBtn.removeAttribute('disabled')
+      prevBtn.classList.remove('is-disabled')
     } else {
-      prevBtn.setAttribute('disabled', 'disabled')
+      prevBtn.classList.add('is-disabled')
     }
 
     if (emblaApi.canScrollNext()) {
-      nextBtn.removeAttribute('disabled')
+      nextBtn.classList.remove('is-disabled')
     } else {
-      nextBtn.setAttribute('disabled', 'disabled')
+      nextBtn.classList.add('is-disabled')
     }
   }
 
