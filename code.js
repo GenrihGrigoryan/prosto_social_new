@@ -288,3 +288,22 @@ function toggleOption(option) {
         }
     }));
 }
+
+
+function mainButtonClick(){
+
+    const actionButton = document.getElementById('actionButton');
+    const offerText = document.getElementById('offerText');
+
+    
+    openPopup("Выбор тарифа", "#icon-tier", "content/tiers.html");
+
+    // Показываем текст о соглашении с офертой
+    setTimeout(() => {
+        actionButton.classList.add('clicked');
+        offerText.classList.add('visible');
+    }, 150);
+
+}
+
+        
