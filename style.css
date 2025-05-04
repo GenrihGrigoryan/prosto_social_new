@@ -39,6 +39,7 @@ h6 {
 
 h3 {
     font-size: 24px;
+    line-height: 24px;
 }
 
 a {
@@ -879,7 +880,7 @@ li:not(:last-child) {
         --font-contrast-color: #fff;
         --form-color: #191920;
         --info-color: #1a1d29;
-        --accent-color: #887dc6; 
+        --accent-color: #4e71c5; 
         --secondary-color: rgb(32, 37, 41);
         --link-hover: #d04000;
 
@@ -896,7 +897,121 @@ li:not(:last-child) {
     .popup-header-panel:hover {
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
     }
-    
 
 }
 
+/* ---------------- */
+
+
+.toggler {
+    position: relative;
+    display: flex;
+    background: var(--form-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 16px;
+    padding: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Горизонтальный тогглер */
+.toggler.horizontal {
+    height: 56px;
+}
+
+/* Вертикальный тогглер */
+.toggler.vertical {
+    flex-direction: column;
+    padding: 10px 20px;
+}
+
+/* Слайдер для обоих тогглеров */
+.toggler-slider {
+    position: absolute;
+    background: var(--accent-color);
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+
+/* Горизонтальный слайдер */
+.toggler.horizontal .toggler-slider {
+    top: 8px;
+    bottom: 8px;
+    width: calc(50% - 8px);
+    height: auto;
+}
+
+/* Вертикальный слайдер */
+.toggler.vertical .toggler-slider {
+    left: 8px;
+    right: 8px;
+    height: calc(50% - 8px);
+    width: auto;
+}
+
+/* Опции для обоих тогглеров */
+.toggler-option {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--accent-color);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 450;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toggler.vertical .toggler-option{
+    justify-content: left;
+    display: block;
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 16px;
+    padding: 14px clamp(2px, .5vw, 4px);
+}
+
+.toggler.horizontal .toggler-option {
+    justify-content: center;
+    font-size: clamp(14px, 2vw, 17px);
+    line-height: 16px;
+    padding: 0px;
+}
+
+.toggler.vertical .toggler-option h3 {
+    margin: 0 0 8px 0;
+}
+
+  .opt-sect {
+    padding-left: 12px;
+    color: var(--accent-color);
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .opt-desc {
+    padding-left: 16px;
+    color: var(--font-color);
+    font-size: clamp(16px, 2.5vw, 18px);
+    font-weight: 450;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+
+.toggler-option.selected {
+    color: var(--font-contrast-color);
+}
+
+.selected-tier {
+    fill: currentColor; 
+    margin: 0px 0px 3px 4px;
+    opacity: 0;
+    transition: opacity ease-in-out 0.1s;
+}
+
+.selected .selected-tier{
+    opacity: 1;
+}

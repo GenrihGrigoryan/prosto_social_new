@@ -257,3 +257,34 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('resize', () => {
   initEmblaIfNeeded()
 })
+
+
+function toggleOption(option) {
+    const toggler = option.parentElement;
+    const options = toggler.querySelectorAll('.toggler-option');
+    const slider = toggler.querySelector('.toggler-slider');
+    const isVertical = toggler.classList.contains('vertical');
+    const index = parseInt(option.dataset.index);
+
+    // Обновить data-selected
+    toggler.dataset.selected = index;
+
+    // Обновить классы
+    options.forEach(opt => opt.classList.remove('selected'));
+    option.classList.add('selected');
+
+    // Сдвинуть слайдер
+    if (isVertical) {
+        slider.style.transform = `translateY(${index * 100}%)`;
+    } else {
+        slider.style.transform = `translateX(${index * 100}%)`;
+    }
+
+    // Вызвать событие
+    document.dispatchEvent(new CustomEvent('toggleChange', {
+        detail: {
+            togglerId: toggler.id,
+            selectedIndex: index
+        }
+    }));
+}
