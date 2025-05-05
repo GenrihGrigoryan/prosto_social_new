@@ -424,20 +424,21 @@
     
     </div>
 
-    <form id="paymentForm" action="https://pay.prostosocial.store/create_lava_payment_link" method="post">
-        <input class="not-visible" form="paymentForm" type="radio" name="subscription" id="subOption1Radio" value="monthly"  checked>
-        <input class="not-visible" form="paymentForm" type="radio" name="subscription" id="subOption2Radio" value="lifetime" >
+    <form class="not-visible" id="paymentForm" action="https://pay.prostosocial.store/create_lava_payment_link" method="post"></form>
+    <input class="not-visible" form="paymentForm" type="radio" name="subscription" id="subOption1Radio" value="monthly"  checked>
+    <input class="not-visible" form="paymentForm" type="radio" name="subscription" id="subOption2Radio" value="lifetime" >
+        
         <div class="floating-button-container">
-            <button type="submit" class="floating-button unselectable" id="actionButton">
+            <button form="paymentForm" type="submit" class="floating-button" id="actionButton">
 
-                <div class="button-content">
+                <div class="button-content unselectable">
                     <svg style="margin-right: 8px;" color="white" width="32" height="32">
                         <use href="#icon-hi" />
                     </svg>
                     <span>Ваш навигатор эффективности</span>
                 </div>
 
-                <div class="new-content">
+                <div class="new-content unselectable">
                     <span>Перейти к оплате</span>
                     <svg style="margin-left: 8px;" fill="white" width="24" height="24">
                         <use href="#icon-next" />
@@ -446,12 +447,12 @@
 
             </button>
 
-            <div class="offer-text" id="offerText">
+            <div class="offer-text unselectable" id="offerText">
                 Нажимая на кнопку, вы соглашаетесь с <a href="https://prosto.social/oferta/">условиями оферты</a>.
             </div>
 
         </div>
-    </form>
+    
 
 
         <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
