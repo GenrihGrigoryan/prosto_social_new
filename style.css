@@ -610,7 +610,7 @@ li:not(:last-child) {
     justify-content: center;
     pointer-events: none;
     /* блокирует клики вне кнопки */
-    z-index: 1000;
+    z-index: 1010;
 }
 
 .popup-header-panel {
