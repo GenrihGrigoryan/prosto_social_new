@@ -19,7 +19,7 @@
     <link rel="prefetch" href="content/free_material.html">
     <link rel="prefetch" href="content/materials.html">
     <link rel="prefetch" href="content/tiers.html">
-
+    
     <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
     <link rel="shortcut icon" href="favicon/favicon.ico" />
@@ -29,18 +29,39 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Простое Сообщество" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
+    <meta name="apple-mobile-web-app-title" content="Простое Сообщество" />
     <meta name="application-name" content="Простое Сообщество" />
-    <meta name="description" content="Ваш навигатор эффективности">
-
     <meta property="og:site_name" content="Простое Сообщество" />
-    <meta property="og:image" content="preview.jpg">
-    <meta property="og:description" content="Ваш навигатор эффективности" />
     <meta property="og:title" content="Простое Сообщество">
-    <meta property="og:type" content="profile">
+
+    <meta name="description" content="Ваш навигатор эффективности">
+    <meta property="og:description" content="Ваш навигатор эффективности" />
+
+    <meta property="og:image" content="preview.jpg">
+    <meta property="og:type" content="website">
+
+
+        <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    
+        ym(101619334, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/101619334" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+        
 
 </head>
 
@@ -202,10 +223,6 @@
                             <div class="tag">#здоровым</div>
                             <div class="tag">#сильным</div>
                             <div class="tag">#мудрым</div>
-                            <!--
-                            <div class="tag">#состоятельным</div>
-                            <div class="tag">#креативным</div>
-                            -->
                         </div>
                         <div class="btn"
                             onclick="openPopup('Материалы Сообщества', '#icon-book', 'content/materials.html', closePopup)">
@@ -226,7 +243,6 @@
                             <div class="tag"><strong>2 стрима</strong> с тонной науки</div>
                             <div class="tag"><strong>30</strong> напоминаний и <strong>лайфхаков</strong></div>
                             <div class="tag"><strong>10 статей</strong> об эффективности</div>
-                            <!--<div class="tag"><strong>20+</strong> интересных <strong>обсуждений</strong></div>-->
                             <div class="tag"><strong>15+</strong> ответов на <strong>ваши вопросы</strong></div>
                         </div>
 
@@ -245,16 +261,7 @@
                         <h3>Живое сообщество</h3>
                         <p class="special"><strong>2500+</strong> активных участников, разделяющих ценности саморазвития
                         </p>
-                        <!--<p class="desc">Отзыв от <strong>@govard</strong>:</p>-->
                         <div class="testimonial">
-                            <!--
-                            <img style="
-                            position: absolute;
-                            width: 28px;
-                            height: 28px;
-                            right: 8px;
-                            bottom: 8px;" src="avatars/olex.png">
-                            -->
                             <div>Каждый день напоминая зачем нужны маленькие интервенции я больше внедряю их в свою
                                 рутину. Сообщество стало для меня сильным мотиватором<br> и источником знаний</div>
 
@@ -401,7 +408,6 @@
         <div class="popup-overlay" id="popup">
             <div class="popup-content">
 
-                <!-- Компонент эффекта размытия -->
                 <div class="blur-overlay">
                     <div class="blur-layer"></div>
                 </div>

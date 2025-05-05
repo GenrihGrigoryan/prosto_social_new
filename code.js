@@ -6,15 +6,12 @@ function rotateCarousel() {
     const nextIndex = (currentIndex + 1) % items.length;
     const next = items[nextIndex];
 
-    // Убираем текущий элемент вверх
     current.classList.remove('active');
     current.classList.add('prev');
 
-    // Поднимаем следующий элемент
     next.classList.remove('next');
     next.classList.add('active');
 
-    // После завершения анимации (1с) готовим следующий элемент
     setTimeout(() => {
         current.classList.remove('prev');
         current.classList.add('next');
@@ -22,16 +19,13 @@ function rotateCarousel() {
 
     currentIndex = nextIndex;
 
-    // Запускаем следующий цикл через 2 секунды после начала анимации
     setTimeout(rotateCarousel, 2000);
 }
 
-// Запускаем первый цикл через 2 секунды
 setTimeout(rotateCarousel, 2000);
 
 const popup = document.getElementById('popup');
 
-// Ищем элементы внутри попапа вместо всего документа
 const popupContent = popup.querySelector('.popup-content');
 const popupHeaderPanel = popup.querySelector('.popup-header-panel');
 const popupTitle = popup.querySelector('.popup-header-title');
@@ -42,7 +36,6 @@ const blurEl = popup.querySelector('.blur-layer');
 var popupIsOpen = false;
 
 function openPopup(title, iconId, contentFile, action, isEnabledBlur = true) {
-    // Первый шаг: показываем фон
 
     blurEl.style.display = isEnabledBlur ? 'block' : 'none';
 
@@ -54,15 +47,12 @@ function openPopup(title, iconId, contentFile, action, isEnabledBlur = true) {
 
     popupHeaderPanel.onclick = action;
 
-    // Устанавливаем заголовок попапа
     popupTitle.querySelector('span').textContent = title;
 
-    // Устанавливаем иконку
     popupTitle.querySelector('svg use').setAttribute('href', iconId);
 
     popup.classList.add('active');
     
-    // Загружаем содержимое из файла
     fetch(contentFile)
         .then(response => {
             if (!response.ok) {
@@ -71,7 +61,6 @@ function openPopup(title, iconId, contentFile, action, isEnabledBlur = true) {
             return response.text();
         })
         .then(content => {
-            // Вставляем содержимое в контейнер
             contentContainer.innerHTML = content;
             
             requestAnimationFrame(() => {
@@ -89,26 +78,19 @@ function openPopup(title, iconId, contentFile, action, isEnabledBlur = true) {
 
 function switchPopupContent(title, iconId, contentFile, action, isEnabledBlur = true) {
     
-  // 1. Плавно скрываем старый контент
   popupContent.classList.remove('show');
 
-  // 2. Ждём завершения перехода (обычно ~300ms)
   setTimeout(() => {
       blurEl.style.display = isEnabledBlur ? 'block' : 'none';
 
-      // Очищаем старое содержимое
       contentContainer.innerHTML = '';
 
-      // Обновляем заголовок
       popupTitle.querySelector('span').textContent = title;
 
-      // Обновляем иконку
       popupTitle.querySelector('svg use').setAttribute('href', iconId);
 
-      // Обновляем обработчик
       popupHeaderPanel.onclick = action;
 
-      // Загружаем новое содержимое
       fetch(contentFile)
           .then(response => {
               if (!response.ok) {
@@ -119,7 +101,6 @@ function switchPopupContent(title, iconId, contentFile, action, isEnabledBlur = 
           .then(content => {
               contentContainer.innerHTML = content;
 
-              // Плавно показываем новый контент
               requestAnimationFrame(() => {
                   popupContent.classList.add('show');
               });
@@ -131,38 +112,31 @@ function switchPopupContent(title, iconId, contentFile, action, isEnabledBlur = 
 
       popup.scrollTop = popupContent.scrollTop = contentContainer.scrollTop = 0;
 
-  }, 300); // Подстроить под transition-duration в CSS
+  }, 300); 
 }
 
 
-// Функция закрытия попапа с последовательной анимацией
 function closePopup() {
 
   popupIsOpen = false;
 
-    // Сначала прячем содержимое
     popupContent.classList.remove('show');
     
-    // После завершения анимации содержимого, начинаем плавное исчезновение фона
     setTimeout(() => {
-        // Не удаляем класс active, а просто устанавливаем непосредственно opacity в 0
         popup.style.opacity = '0';
         
-        // Возвращаем скролл основной страницы
         document.body.style.overflow = '';
         
-        // После плавного исчезновения фона полностью скрываем элемент
         setTimeout(() => {
             popup.classList.remove('active');
-            popup.style.opacity = ''; // Сбрасываем inline стиль opacity
+            popup.style.opacity = ''; 
             
             contentContainer.innerHTML = '';
 
-            // Сбрасываем стили для следующего открытия
             popupContent.style.transition = '';
             popupContent.style.transform = '';
-        }, 500); // Длительность затухания фона
-    }, 100); // Длительность анимации скрытия контента
+        }, 500); 
+    }, 100);
 }
 
 function onToggleItem(item) {
@@ -173,33 +147,13 @@ function onToggleItem(item) {
     
     const isActive = item.classList.toggle('active');
     
-    // Set max-height for smooth animation
     if (isActive) {
-        // Get the height of the content + padding
         const height = contentInner.offsetHeight;
         content.style.maxHeight = `${height}px`;
     } else {
         content.style.maxHeight = '0px';
     }          
 }
-
-//--------
-
-    /*
-    const isLikelyMac = () => {
-        if (navigator.userAgentData?.platform) {
-          return navigator.userAgentData.platform.toLowerCase().includes('mac');
-        }
-        return navigator.userAgent.toLowerCase().includes('mac');
-      };
-    
-    const isMacTrackpad = isLikelyMac() && window.matchMedia('(pointer: fine)').matches;
-    */
-
-// Листатель для десктопа
-
-//import EmblaCarousel from 'embla-carousel';
-
 
 const OPTIONS = { 
     loop: false,
@@ -220,21 +174,6 @@ function initEmblaIfNeeded() {
   const nextBtnNode = emblaNode.querySelector('.embla__button--next')
   const snapDisplayNode = emblaNode.querySelector('.embla__selected-snap-display')
 
-  /*
-  // Не инициализировать на тач-устройствах
-  if (window.matchMedia('(pointer: coarse)').matches) {
-    if (embla) {
-      embla.destroy()
-      embla = null
-      if (removeButtonHandlers) {
-        removeButtonHandlers()
-        removeButtonHandlers = null
-      }
-    }
-    return
-  }
-*/
-
   const viewportWidth = viewportNode.offsetWidth
   const containerWidth = containerNode.scrollWidth
   const needsCarousel = containerWidth > viewportWidth
@@ -253,18 +192,15 @@ function initEmblaIfNeeded() {
   if (!embla && needsCarousel) {
     embla = EmblaCarousel(viewportNode, OPTIONS)
 
-    // Drag-класс
     embla.on('pointerDown', () => containerNode.classList.add('is-dragging'))
     embla.on('pointerUp', () => containerNode.classList.remove('is-dragging'))
     embla.on('pointerCancel', () => containerNode.classList.remove('is-dragging'))
 
-    // Кнопки и индикатор
     removeButtonHandlers = addPrevNextBtnsClickHandlers(
         embla,
         prevBtnNode,
         nextBtnNode
       )
-    //updateSelectedSnapDisplay(embla, snapDisplayNode)
 
     embla.on('destroy', () => {
       if (removeButtonHandlers) {
@@ -305,7 +241,6 @@ function addPrevNextBtnsClickHandlers (emblaApi, prevBtn, nextBtn) {
       .on('init', togglePrevNextBtnsState)
       .on('reInit', togglePrevNextBtnsState)
   
-    // Возвращаем функцию очистки
     return () => {
       prevBtn.removeEventListener('click', scrollPrev, false)
       nextBtn.removeEventListener('click', scrollNext, false)
@@ -328,21 +263,17 @@ function toggleOption(option) {
     const isVertical = toggler.classList.contains('vertical');
     const index = parseInt(option.dataset.index);
 
-    // Обновить data-selected
     toggler.dataset.selected = index;
 
-    // Обновить классы
     options.forEach(opt => opt.classList.remove('selected'));
     option.classList.add('selected');
 
-    // Сдвинуть слайдер
     if (isVertical) {
         slider.style.transform = `translateY(${index * 100}%)`;
     } else {
         slider.style.transform = `translateX(${index * 100}%)`;
     }
 
-    // Вызвать событие
     document.dispatchEvent(new CustomEvent('toggleChange', {
         detail: {
             togglerId: toggler.id,
@@ -422,7 +353,6 @@ function chooseTier(tierType, option){
   toggleOption(option);
 }
 
-// Email validation function (re-introduced)
 function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(String(email).toLowerCase());
@@ -433,7 +363,6 @@ let isSubmitting = false;
 const form = document.getElementById('paymentForm');
 
 form.addEventListener('submit', function(e) {
-    // Prevent double submission
   if (isSubmitting) {
       e.preventDefault();
       return;
@@ -454,7 +383,6 @@ form.addEventListener('submit', function(e) {
       tout = 250;
     }
 
-    // Показываем текст о соглашении с офертой
     setTimeout(() => {
         actionButton.classList.add('clicked');
         offerText.classList.add('visible');
@@ -466,15 +394,12 @@ form.addEventListener('submit', function(e) {
       if (!validateEmail(emailInput.value)) {
         e.preventDefault();
         isSubmitting = false;
-        // УВЕДОМЛЕНИЕ: ВВЕДИТЕ АДРЕС
       }
       else{
         isSubmitting = true;
-        // тут отправляем
       }
     }
     else{
-
       isSubmitting = true;
       e.preventDefault();
     
@@ -488,7 +413,6 @@ form.addEventListener('submit', function(e) {
       }
 
       setTimeout(() => { window.location.href = redirectUrl; }, 100);
-
     }
 
   }

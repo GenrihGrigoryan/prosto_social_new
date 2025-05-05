@@ -75,11 +75,8 @@ ul {
 
 li {
     font-size: inherit;
-    /* 18px; */
     line-height: inherit;
-    /* 20px; */
     font-weight: inherit;
-    /* 450; */
 }
 
 li:not(:last-child) {
@@ -160,7 +157,7 @@ li:not(:last-child) {
     border-radius: 20px;
     overflow: hidden;
     border: 1px solid var(--secondary-color);
-    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); */
+    
 }
 
 .accordion-item {
@@ -187,9 +184,7 @@ li:not(:last-child) {
     line-height: 20px;
     font-weight: 650;
     color: var(--font-color);
-    /* background-color: white; 
-    transition: background-color 0.3s;*/
-    gap: 8px; /* <-- расстояние между текстом и иконкой */
+    gap: 8px; 
 }
 
 .accordion-title {
@@ -246,14 +241,14 @@ li:not(:last-child) {
 }
 
 .parent {
-    justify-content: center; /* space-between; */
-    /*min-height: 100dvh;*/
+    justify-content: center; 
+    
     flex-direction: column;
     display: flex;
-    /* padding: 20px;*/
+    
     box-sizing: border-box;
-    /* max-width: 520px; */
-    /* margin: auto; */
+    
+    
     align-items: center;
     overflow-x: hidden;
     height: 100%;
@@ -268,7 +263,7 @@ li:not(:last-child) {
 }
 
 .carousel-container {
-    font-size: clamp(18px, 4.5vw, 32px); /* 20px; */
+    font-size: clamp(18px, 4.5vw, 32px); 
     display: inline-flex;
     align-items: center;
     height: 30px;
@@ -311,7 +306,7 @@ li:not(:last-child) {
     position: relative;
 }
 
-/* Скрываем скроллбар (для Firefox, Edge) */
+
 .embla__viewport::-webkit-scrollbar { display: none; }
 .embla__viewport { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -321,7 +316,7 @@ li:not(:last-child) {
     margin: 0 auto;
 }
 
-.card-wrapper::-webkit-scrollbar { display: none; /* Chrome, Safari */ }
+.card-wrapper::-webkit-scrollbar { display: none;  }
 
 
 .card-wrapper {
@@ -334,16 +329,10 @@ li:not(:last-child) {
     scroll-behavior: auto;
     -webkit-overflow-scrolling: auto;
     
-    /* было до подключения листалки
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    */
-
     scrollbar-width: none;
-    /* Firefox */
+    
     -ms-overflow-style: none;
-    /* IE и старый Edge */
+    
     cursor: grab;
 }
 
@@ -353,13 +342,13 @@ li:not(:last-child) {
 
 .card {
     flex: 0 0 264px;
-    /* 246px;*/
+    
     background: var(--form-color);
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 24px;
     height: 264px;
-    /* 280px; */
+    
     margin-right: 24px;
     text-align: left;
     position: relative;
@@ -385,8 +374,8 @@ li:not(:last-child) {
     line-height: 18px;
     font-weight: 700;
     color: var(--accent-color);
-    /* margin-top: 30px; */
-    /* margin-bottom: 5px; */
+    
+    
 }
 
 .desc {
@@ -426,15 +415,15 @@ li:not(:last-child) {
     color: var(--accent-color);
     display: inline-flex;
     align-items: center;
-    /* background: #eef0f6; */
-    /* padding: 1px 8px; */
+    
+    
     margin-bottom: 0px;
     font-size: 14px;
     font-weight: 600;
     line-height: 23px;
     border-radius: 8px;
-    /* text-decoration: none; */
-    /* text-underline-offset: 2px;*/
+    
+    
 }
 
 .tag {
@@ -510,7 +499,7 @@ li:not(:last-child) {
 }
 
 
-/* --–---––------- */
+
 
 .popup-overlay {
     position: fixed;
@@ -527,10 +516,10 @@ li:not(:last-child) {
     transition: opacity 0.4s ease;
 }
 
-/* Окно попапа */
+
 .popup-content {
     width: 100%;
-    /* height: 100dvh; */
+    
     position: relative;
     transform: translateY(100%);
     transition: transform 0.5s cubic-bezier(0.3, 0, 0.2, 1);
@@ -542,7 +531,7 @@ li:not(:last-child) {
     transform: translateY(0);
 }
 
-/* Активное состояние для анимации */
+
 .popup-overlay.active {
     opacity: 1;
     visibility: visible;
@@ -552,13 +541,13 @@ li:not(:last-child) {
     position: sticky;
     top: 24px;
     margin-top: -78px;
-    /*для блюра */
+    
     left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     pointer-events: none;
-    /* блокирует клики вне кнопки */
+    
     z-index: 1010;
 }
 
@@ -585,7 +574,7 @@ li:not(:last-child) {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* Название попапа в панели */
+
 .popup-header-title {
     display: inline-flex;
     align-items: center;
@@ -595,7 +584,7 @@ li:not(:last-child) {
     z-index: 1030;
 }
 
-/* Иконка закрытия в панели */
+
 .close-popup-icon {
     width: 24px;
     height: 24px;
@@ -626,7 +615,7 @@ li:not(:last-child) {
 .cont {
     padding-inline: 24px;
     padding-top: 24px;
-    /* без блюра было 48*/
+    
     padding-bottom: 90px;
     max-width: var(--max-width);
     margin: auto;
@@ -638,13 +627,13 @@ li:not(:last-child) {
     left: 0;
     right: 0;
     height: 100px;
-    /* Задаём фиксированную высоту */
+    
     overflow: hidden;
     pointer-events: none;
     z-index: 150;
 }
 
-/* Общий стиль для слоев размытия */
+
 .blur-layer {
     position: absolute;
     inset: 0;
@@ -676,7 +665,7 @@ li:not(:last-child) {
 
 .embla__controls {
     display: none;
-    /* position: absolute; */
+    
     padding-inline: 20px;
     margin-top: -20px;
     justify-content: flex-end;
@@ -726,16 +715,6 @@ li:not(:last-child) {
   }
 
 
-/*
-@media (pointer: coarse) and (hover: none) {
-    .card-wrapper {
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-    }
-  }
-*/
-
 
 @media screen and (max-width: 992px) {
 
@@ -748,19 +727,13 @@ li:not(:last-child) {
         margin-top: 32px;
     }
 
-    /*
-    .centered-section {
-        margin-block-start: 3rem;
-    }
-    */
-
     .blur-overlay {
         height: 94px;
     }
 
     .popup-header-panel-parent{
         top: 16px;
-        /* margin-top: -78px; */
+        
     }
 
     .popup-header-panel {
@@ -775,13 +748,6 @@ li:not(:last-child) {
         font-size: 14px;
         line-height: 14px;
     }
-
-    /*
-    .centered-section {
-        margin-block-start: 48px;
-        margin-block-end: 24px;
-    }
-    */
 
     .tag {
         line-height: 22px;
@@ -802,7 +768,7 @@ li:not(:last-child) {
         overflow-x: visible;
         width: auto;
         max-width: 810px;
-        /* (246px * 3) + (24px * 2) = 810px */
+        
         margin: 0;
         padding: 0px;
         justify-content: center;
@@ -811,7 +777,7 @@ li:not(:last-child) {
     .card {
         padding: 24px 20px;
         margin-right: 0;
-        /* Убираем боковые отступы, так как grid-gap теперь управляет расстоянием */
+        
         height: auto;
         padding-bottom: 48px;
     }
@@ -825,14 +791,14 @@ li:not(:last-child) {
         --font-contrast-color: #ffffff;
         --form-color: #fff;
         --info-color: #dae0f0;
-        --accent-color: #3628b3; /* 3427A6 */
+        --accent-color: #3628b3; 
         --secondary-light-color: rgb(240, 240, 240);
         --secondary-color: rgb(230, 230, 230);;
         --link-hover: #d04000;
     }
 }
 
-/* Dark mode */
+
 @media (prefers-color-scheme: dark) {
     :root {
         --bg-color: #0f1116;
@@ -861,7 +827,7 @@ li:not(:last-child) {
 
 }
 
-/* ---------------- */
+
 
 
 .toggler {
@@ -875,18 +841,18 @@ li:not(:last-child) {
     overflow: hidden;
 }
 
-/* Горизонтальный тогглер */
+
 .toggler.horizontal {
     height: clamp(52px, 10vw, 58px);
 }
 
-/* Вертикальный тогглер */
+
 .toggler.vertical {
     flex-direction: column;
     padding: 8px 16px;
 }
 
-/* Слайдер для обоих тогглеров */
+
 .toggler-slider {
     position: absolute;
     background: var(--accent-color);
@@ -895,7 +861,7 @@ li:not(:last-child) {
     z-index: 0;
 }
 
-/* Горизонтальный слайдер */
+
 .toggler.horizontal .toggler-slider {
     top: 8px;
     bottom: 8px;
@@ -903,7 +869,7 @@ li:not(:last-child) {
     height: auto;
 }
 
-/* Вертикальный слайдер */
+
 .toggler.vertical .toggler-slider {
     left: 8px;
     right: 8px;
@@ -911,7 +877,7 @@ li:not(:last-child) {
     width: auto;
 }
 
-/* Опции для обоих тогглеров */
+
 .toggler-option {
     flex: 1;
     display: flex;
@@ -985,7 +951,7 @@ li:not(:last-child) {
     pointer-events: none;
 }
 
-/* ----------------- */
+
 
 .floating-button-container {
     position: fixed;
@@ -996,8 +962,8 @@ li:not(:last-child) {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    z-index: 2000; /* Выше остальных элементов */
-    padding: 0 16px; /* Отступы по краям экрана */
+    z-index: 2000; 
+    padding: 0 16px; 
   }
 
   .floating-button {
@@ -1006,14 +972,14 @@ li:not(:last-child) {
     padding: 8px;
 
     height: 64px;
-    max-width: calc( var(--max-width) + 40px ); /*  var(--max-width); Максимальная ширина кнопки */
+    max-width: calc( var(--max-width) + 40px ); 
     width: 100%;
     border: none;
     font-weight: 450;
     cursor: pointer;
     font-family: inherit;
     
-    /* background: linear-gradient(to bottom, #493DB4, #281d89); */
+    
 
     background: linear-gradient(to bottom, #493DB4, #281d89, #281d89, #2516a8);
     background-size: 100% 250%;
@@ -1092,7 +1058,7 @@ li:not(:last-child) {
     margin-top: clamp(12px, 3vw, 24px);
 }
 
-/* ------- */
+
 
 .email-form {
     height: clamp(34px, 7vw, 40px);
@@ -1118,7 +1084,7 @@ li:not(:last-child) {
     border-radius: 10px;
     padding-left: 14px;
     border: 1px solid var(--secondary-color);
-    /* box-shadow: inset 0px 0px 1px 0px #000000; */
+    
     background: var(--secondary-light-color);
     color: var(--font-color);
     align-items: center;
@@ -1127,7 +1093,7 @@ li:not(:last-child) {
 
 input::placeholder {
     color: var(--font-color);
-    opacity: 0.5; /* по умолчанию может быть уменьшена */
+    opacity: 0.5; 
   }
 
 .email-form-inner:focus-visible {
