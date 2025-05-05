@@ -37,10 +37,14 @@ const popupHeaderPanel = popup.querySelector('.popup-header-panel');
 const popupTitle = popup.querySelector('.popup-header-title');
 const contentContainer = popup.querySelector('#contentContainer');
 
+const blurEl = popup.querySelector('.blur-layer');
+
 var popupIsOpen = false;
 
-function openPopup(title, iconId, contentFile, action) {
+function openPopup(title, iconId, contentFile, action, isEnabledBlur = true) {
     // Первый шаг: показываем фон
+
+    blurEl.style.display = isEnabledBlur ? 'block' : 'none';
 
     popupIsOpen = true;
 
@@ -83,12 +87,15 @@ function openPopup(title, iconId, contentFile, action) {
     popup.scrollTop = popupContent.scrollTop = contentContainer.scrollTop = 0;
 }
 
-function switchPopupContent(title, iconId, contentFile, action) {
+function switchPopupContent(title, iconId, contentFile, action, isEnabledBlur = true) {
+    
   // 1. Плавно скрываем старый контент
   popupContent.classList.remove('show');
 
   // 2. Ждём завершения перехода (обычно ~300ms)
   setTimeout(() => {
+      blurEl.style.display = isEnabledBlur ? 'block' : 'none';
+
       // Очищаем старое содержимое
       contentContainer.innerHTML = '';
 
@@ -440,10 +447,10 @@ form.addEventListener('submit', function(e) {
     var tout = 150;
 
     if(!popupIsOpen){
-      openPopup("Выбор тарифа", "#icon-tier", "content/tiers.html", closeMainButton);
+      openPopup("Выбор тарифа", "#icon-tier", "content/tiers.html", closeMainButton, false);
     }
     else{
-      switchPopupContent("Выбор тарифа", "#icon-tier", "content/tiers.html", closeMainButton);
+      switchPopupContent("Выбор тарифа", "#icon-tier", "content/tiers.html", closeMainButton, false);
       tout = 250;
     }
 
