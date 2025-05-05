@@ -1025,7 +1025,7 @@ li:not(:last-child) {
   }
 
   .floating-button:hover {
-    background-position: 0% 75%;
+    background-position: 0% 15%;
     box-shadow: 0 2px 6px 0px rgba(29, 29, 119, 0.3);
     }
 
