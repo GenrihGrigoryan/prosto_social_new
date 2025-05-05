@@ -62,6 +62,11 @@ p {
     font-weight: 450;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
 ul {
     margin-block-start: 8px;
     margin-block-end: 8px;
@@ -497,6 +502,11 @@ li:not(:last-child) {
     font-size: 12px;
     line-height: 14px;
     font-weight: 700;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.025);
 }
 
 
@@ -547,10 +557,6 @@ li:not(:last-child) {
     /* margin: 0 24px; */
     cursor: pointer;
     transition: all 1s ease;
-}
-
-.footer-button:hover {
-    box-shadow: 0 2px 16px 0 rgba(29, 29, 119, 0.5);
 }
 
 
@@ -668,10 +674,10 @@ li:not(:last-child) {
 }
 
 .cont {
-    padding: 32px;
+    padding-inline: 24px;
     padding-top: 24px;
     /* без блюра было 48*/
-    padding-bottom: 100px;
+    padding-bottom: 90px;
     max-width: var(--max-width);
     margin: auto;
 }
@@ -790,6 +796,8 @@ li:not(:last-child) {
 
 @media screen and (max-width: 992px) {
 
+
+
     .embla__controls{
         display: flex;
     }
@@ -824,11 +832,6 @@ li:not(:last-child) {
 
     .footer-button {
         /* margin: 0 16px; */
-    }
-
-    .cont {
-        padding: 24px;
-        padding-bottom: 80px;
     }
 
 }
@@ -941,13 +944,13 @@ li:not(:last-child) {
 
 /* Горизонтальный тогглер */
 .toggler.horizontal {
-    height: 56px;
+    height: clamp(52px, 10vw, 58px);
 }
 
 /* Вертикальный тогглер */
 .toggler.vertical {
     flex-direction: column;
-    padding: 8px 20px;
+    padding: 8px 16px;
 }
 
 /* Слайдер для обоих тогглеров */
@@ -996,18 +999,18 @@ li:not(:last-child) {
     display: block;
     font-size: clamp(16px, 2vw, 18px);
     line-height: 16px;
-    padding: 14px clamp(2px, .5vw, 4px);
+    padding: clamp(8px, 2vw, 16px) clamp(0px, 1vw, 6px);
 }
 
 .toggler.horizontal .toggler-option {
     justify-content: center;
-    font-size: clamp(14px, 2vw, 17px);
+    font-size: clamp(13px, 2vw, 17px);
     line-height: 16px;
     padding: 0px;
 }
 
 .toggler.vertical .toggler-option h3 {
-    margin: 0 0 8px 0;
+    margin: 0 2px 8px 0;
 }
 
   .opt-sect {
@@ -1018,12 +1021,12 @@ li:not(:last-child) {
   }
 
   .opt-desc {
-    padding-left: 16px;
+    padding-left: 12px;
     color: var(--font-color);
-    font-size: clamp(16px, 2.5vw, 18px);
+    font-size: clamp(15px, 2.5vw, 18px);
     font-weight: 450;
-    line-height: 18px;
-    margin-bottom: 10px;
+    line-height: clamp(18px, 3vw, 22px);
+    margin-bottom: clamp(4px, 1vw, 10px);
   }
 
 .toggler-option.selected {
@@ -1039,6 +1042,14 @@ li:not(:last-child) {
 
 .selected .selected-tier{
     opacity: 1;
+}
+
+.not-visible {
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    pointer-events: none;
 }
 
 /* ----------------- */
@@ -1062,19 +1073,32 @@ li:not(:last-child) {
     padding: 8px;
 
     height: 64px;
-    max-width: calc( var(--max-width) + 24px ); /*  var(--max-width); Максимальная ширина кнопки */
+    max-width: calc( var(--max-width) + 40px ); /*  var(--max-width); Максимальная ширина кнопки */
     width: 100%;
     border: none;
     font-weight: 450;
     cursor: pointer;
     font-family: inherit;
     
-    background: linear-gradient(to bottom, #493DB4, #281d89);
-    box-shadow: 0 2px 12px 0 rgba(29, 29, 119, 0.35);
+    /* background: linear-gradient(to bottom, #493DB4, #281d89); */
+
+    background: linear-gradient(to bottom, #493DB4, #281d89, #281d89, #2516a8);
+    background-size: 100% 250%;
+
+    box-shadow: 0 3px 12px 1px rgba(29, 29, 119, 0.4);
     color: var(--font-contrast-color);
 
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
   }
+
+  .floating-button:hover {
+    background-position: 0% 75%;
+    box-shadow: 0 2px 6px 0px rgba(29, 29, 119, 0.3);
+    }
+
+    .floating-button:active {
+        transform: scale(0.95);
+    }
 
   .button-content {
     display: flex;
@@ -1120,10 +1144,10 @@ li:not(:last-child) {
 .offer-text {
     position: absolute;
     height: 32px;
-    bottom: -42px;
+    bottom: -48px;
 
     color: var(--font-color);
-    font-size: 13px;
+    font-size: 12px;
     opacity: 0;
     transition: all 0.3s ease;
     text-align: center;
@@ -1132,12 +1156,13 @@ li:not(:last-child) {
 }
 
 .payment-margin {
-    margin-top: clamp(16px, 4vw, 32px);
+    margin-top: clamp(12px, 3vw, 24px);
 }
 
 /* ------- */
 
 .email-form {
+    height: clamp(34px, 7vw, 40px);
     position: relative;
     display: flex;
     background: var(--form-color);
@@ -1145,19 +1170,37 @@ li:not(:last-child) {
     border-radius: 16px;
     padding: 8px;
     flex-direction: row;
-    height: 40px;
     align-items: center;
     justify-content: center;
 }
 
 .email-form-inner{
+    padding: 0px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+
     width: 100%;
     height: 100%;
     border-radius: 10px;
     padding-left: 14px;
+    border: 1px solid var(--secondary-color);
     /* box-shadow: inset 0px 0px 1px 0px #000000; */
     background: var(--secondary-light-color);
-    color: #515151;
+    color: var(--font-color);
     align-items: center;
     display: flex;
+}
+
+input::placeholder {
+    color: var(--font-color);
+    opacity: 0.5; /* по умолчанию может быть уменьшена */
+  }
+
+.email-form-inner:focus-visible {
+    outline: 2px solid var(--accent-color);
+}
+
+.hidden {
+    display: none;
 }

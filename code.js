@@ -33,15 +33,22 @@ const popup = document.getElementById('popup');
 
 // Ищем элементы внутри попапа вместо всего документа
 const popupContent = popup.querySelector('.popup-content');
+const popupHeaderPanel = popup.querySelector('.popup-header-panel');
 const popupTitle = popup.querySelector('.popup-header-title');
 const contentContainer = popup.querySelector('#contentContainer');
 
-function openPopup(title, iconId, contentFile) {
+var popupIsOpen = false;
+
+function openPopup(title, iconId, contentFile, action) {
     // Первый шаг: показываем фон
+
+    popupIsOpen = true;
 
     contentContainer.innerHTML = '';
 
     document.body.style.overflow = 'hidden';
+
+    popupHeaderPanel.onclick = action;
 
     // Устанавливаем заголовок попапа
     popupTitle.querySelector('span').textContent = title;
@@ -76,8 +83,56 @@ function openPopup(title, iconId, contentFile) {
     popup.scrollTop = popupContent.scrollTop = contentContainer.scrollTop = 0;
 }
 
+function switchPopupContent(title, iconId, contentFile, action) {
+  // 1. Плавно скрываем старый контент
+  popupContent.classList.remove('show');
+
+  // 2. Ждём завершения перехода (обычно ~300ms)
+  setTimeout(() => {
+      // Очищаем старое содержимое
+      contentContainer.innerHTML = '';
+
+      // Обновляем заголовок
+      popupTitle.querySelector('span').textContent = title;
+
+      // Обновляем иконку
+      popupTitle.querySelector('svg use').setAttribute('href', iconId);
+
+      // Обновляем обработчик
+      popupHeaderPanel.onclick = action;
+
+      // Загружаем новое содержимое
+      fetch(contentFile)
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error(`Ошибка загрузки файла: ${response.status}`);
+              }
+              return response.text();
+          })
+          .then(content => {
+              contentContainer.innerHTML = content;
+
+              // Плавно показываем новый контент
+              requestAnimationFrame(() => {
+                  popupContent.classList.add('show');
+              });
+          })
+          .catch(error => {
+              console.error('Ошибка при загрузке содержимого:', error);
+              contentContainer.innerHTML = `<p>Ошибка загрузки содержимого: ${error.message}</p>`;
+          });
+
+      popup.scrollTop = popupContent.scrollTop = contentContainer.scrollTop = 0;
+
+  }, 300); // Подстроить под transition-duration в CSS
+}
+
+
 // Функция закрытия попапа с последовательной анимацией
 function closePopup() {
+
+  popupIsOpen = false;
+
     // Сначала прячем содержимое
     popupContent.classList.remove('show');
     
@@ -290,20 +345,152 @@ function toggleOption(option) {
 }
 
 
-function mainButtonClick(){
+const actionButton = document.getElementById('actionButton');
+const offerText = document.getElementById('offerText');
 
-    const actionButton = document.getElementById('actionButton');
-    const offerText = document.getElementById('offerText');
+var tierSelect = false;
 
+var card = 'russian';
+var tier = 'tier1';
+
+function choosePaymentMethod(cardType, option){
+
+  card = cardType;
+
+  const emailSection = document.getElementById('mailform');
+  const tier1 = document.getElementById("tier-1");
+  const tier2 = document.getElementById("tier-2");
+
+  const tier1name = tier1.querySelector("h3");
+  const tier1desc = tier1.querySelector(".tierdesc");
+
+  const tier2name = tier2.querySelector("h3");
+  const tier2desc = tier2.querySelector(".tierdesc");
+
+  const emailInput = document.getElementById('email'); 
+
+  if(cardType === "foreign"){
+    emailSection.classList.remove('hidden');
     
-    openPopup("Выбор тарифа", "#icon-tier", "content/tiers.html");
+    tier1name.textContent = '15';
+    tier1name.parentElement.querySelector("span").textContent = '$';
+    tier1desc.textContent = 'Один месяц, подписка';
+
+    tier2name.textContent = '160';
+    tier2name.parentElement.querySelector("span").textContent = '$';
+
+    emailInput.setAttribute('required', '');
+  }
+  else{
+    emailSection.classList.add('hidden');
+
+    tier1name.textContent = '2900';
+    tier1name.parentElement.querySelector("span").textContent = '₽';
+    tier1desc.textContent = 'Три месяца, подписка';
+
+    tier2name.textContent = '14900';
+    tier2name.parentElement.querySelector("span").textContent = '₽';
+
+    emailInput.removeAttribute('required');
+  }
+
+  toggleOption(option);
+
+}
+
+function chooseTier(tierType, option){
+
+  tier = tierType;
+
+  const option1Radio = document.getElementById('subOption1Radio');
+  const option2Radio = document.getElementById('subOption2Radio');
+
+  if(tierType === 'tier1'){
+    option1Radio.checked = true;
+  }
+  else{
+    option2Radio.checked = true;
+  }
+
+  toggleOption(option);
+}
+
+// Email validation function (re-introduced)
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase());
+}
+
+
+let isSubmitting = false;
+const form = document.getElementById('paymentForm');
+
+form.addEventListener('submit', function(e) {
+    // Prevent double submission
+  if (isSubmitting) {
+      e.preventDefault();
+      return;
+  }
+
+  if(!tierSelect){
+    e.preventDefault();
+
+    tierSelect = true;
+
+    if(!popupIsOpen){
+      openPopup("Выбор тарифа", "#icon-tier", "content/tiers.html", closeMainButton);
+    }
+    else{
+      switchPopupContent("Выбор тарифа", "#icon-tier", "content/tiers.html", closeMainButton);
+    }
 
     // Показываем текст о соглашении с офертой
     setTimeout(() => {
         actionButton.classList.add('clicked');
         offerText.classList.add('visible');
     }, 150);
+  }
+  else{
 
+    if(card === 'foreign'){
+      if (!validateEmail(emailInput.value)) {
+        e.preventDefault();
+        isSubmitting = false;
+        // УВЕДОМЛЕНИЕ: ВВЕДИТЕ АДРЕС
+      }
+      else{
+        isSubmitting = true;
+        // тут отправляем
+      }
+    }
+    else{
+
+      isSubmitting = true;
+      e.preventDefault();
+    
+      let redirectUrl = '';
+
+      if(tier === "tier1"){
+        redirectUrl = 'https://prosto.social/checkout/?add-to-cart=16611';
+      }
+      else{
+        redirectUrl = 'https://prosto.social/checkout/?add-to-cart=1340';
+      }
+
+      setTimeout(() => { window.location.href = redirectUrl; }, 100);
+
+    }
+
+  }
+
+});
+
+function closeMainButton(){
+
+  tierSelect = false;
+
+  actionButton.classList.remove('clicked');
+  offerText.classList.remove('visible');
+
+  closePopup();
 }
-
-        

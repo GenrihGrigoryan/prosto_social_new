@@ -14,42 +14,48 @@
     </defs>
 </svg>
 
-<div style="display: flex; flex-direction: column; height: 68vh; width: 100%; justify-content: center; align-items: center;">
+<div style="display: flex; flex-direction: column; height: clamp(62vh, 60vw, 72vh); width: 100%; justify-content: center; align-items: center;">
 
     <div style="    
         width: 100%;
         max-width: 500px;">
 
+
+            
+        
+
         <!--<div class="opt-sect" style="margin-top: -12px;">Тип карты</div>-->
-        <div class="opt-desc"><strong style="color: var(--accent-color);">Тип карты</strong> влияет на способ оплаты. Для оплаты криптовалютой напишите нам в <a href="#">Telegram</a>.</div>
+        <div class="opt-desc"><strong style="color: var(--accent-color);">Выберите тип карты</strong>. Для оплаты криптовалютой напишите нам в <a href="https://t.me/prostosocial_help">Telegram</a>.</div>
 
         <div class="toggler horizontal unselectable" id="payment-type-toggle" data-selected="0">
             <div class="toggler-slider"></div>
-            <div class="toggler-option selected" data-index="0" onclick="toggleOption(this)">
+            <div class="toggler-option selected" data-index="0" onclick="choosePaymentMethod('russian', this)">
                 <svg class="small" style="fill: currentColor; margin-right: 5px;"><use href="#icon-card"/></svg>Российская карта</div>
-            <div class="toggler-option" data-index="1" onclick="toggleOption(this)">
+            <div class="toggler-option" data-index="1" onclick="choosePaymentMethod('foreign', this)">
                 <svg class="small" style="fill: currentColor; margin-right: 4px;"><use href="#icon-global"/></svg>Иностранная карта</div>
         </div>
 
-        <div class="opt-desc payment-margin"><strong style="color: var(--accent-color);">Ваш email</strong> будет использован для оформления доступа.</div>
-        <div class="email-form">
-            <div class="email-form-inner">example@mail.com</div>
+        <div id="mailform" class="hidden">
+            <div class="opt-desc payment-margin"><strong style="color: var(--accent-color);">Ваш email</strong> будет использован для оформления доступа.</div>
+            <div class="email-form">
+                <input type="email" id="email" name="email" form="paymentForm" placeholder="example@mail.com" class="email-form-inner"></input>
+            </div>
         </div>
 
         <!--<div style="height: 4vw;"></div>-->
 
         <!--<div class="opt-sect" style="margin-top: 16px;">Тариф</div>-->
-        <div class="opt-desc payment-margin""><strong style="color: var(--accent-color);">Тарифы</strong> дают полный доступ к Сообщству и отличаются только продолжительностью.</div>
+        <div class="opt-desc payment-margin""><strong style="color: var(--accent-color);">Тарифы</strong> дают полный доступ и отличаются только продолжительностью.</div>
 
         <div class="toggler vertical unselectable" id="tier-toggle" data-selected="0">
             <div class="toggler-slider"></div>
-            <div class="toggler-option selected" data-index="0" onclick="toggleOption(this)">
-                    <div style="display: flex; align-items: center;"><h3>2900р</h3><svg class="big selected-tier"><use href="#icon-tier"/></svg></div>
-                    <div>Три месяца, подписка</div>
+            <div class="toggler-option selected" id="tier-1" data-index="0" onclick="chooseTier('tier1', this)">
+                    <div style="display: flex; align-items: center;"><h3>2900</h3><span style="font-weight: 500;">₽</span><svg class="big selected-tier"><use href="#icon-tier"/></svg></div>
+                    <div class="tierdesc">Три месяца, подписка</div>
             </div>
-            <div class="toggler-option" data-index="1" onclick="toggleOption(this)">
-                <div style="display: flex; align-items: center;"><h3>14900р</h3><svg class="big selected-tier"><use href="#icon-tier"/></svg></div>
-                <div>Вечный доступ, единовременно</div>
+            <div class="toggler-option" id="tier-2" data-index="1" onclick="chooseTier('tier2', this)">
+                <div style="display: flex; align-items: center;"><h3>14900</h3><span style="font-weight: 500;">₽</span><svg class="big selected-tier"><use href="#icon-tier"/></svg></div>
+                <div class="tierdesc">Вечный доступ, единовременно</div>
             </div>
         </div>
 
