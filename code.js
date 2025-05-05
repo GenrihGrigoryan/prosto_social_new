@@ -437,18 +437,21 @@ form.addEventListener('submit', function(e) {
 
     tierSelect = true;
 
+    var tout = 150;
+
     if(!popupIsOpen){
       openPopup("Выбор тарифа", "#icon-tier", "content/tiers.html", closeMainButton);
     }
     else{
       switchPopupContent("Выбор тарифа", "#icon-tier", "content/tiers.html", closeMainButton);
+      tout = 250;
     }
 
     // Показываем текст о соглашении с офертой
     setTimeout(() => {
         actionButton.classList.add('clicked');
         offerText.classList.add('visible');
-    }, 150);
+    }, tout);
   }
   else{
 
